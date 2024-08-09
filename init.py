@@ -105,4 +105,3 @@ rollMod = 0
 randomNum = 0
 subrace = 'undefined'	
 classDice = 0
-
