@@ -109,7 +109,7 @@ def arcaRoll():
         init.roll=random.randint(1,20)
         init.roll=init.roll+init.intMod+init.profBonus
         print(init.roll)
-    elif init.arcaProf='false':
+    elif init.arcaProf=='false':
         init.roll=random.randint(1,20)
         init.roll=init.roll+init.intMod
         print(init.roll)
