@@ -765,9 +765,7 @@ class Ui_charaSheet(object):
         self.hpBox.setText(_translate("charaSheet", "0/0"))
         self.submitHp.setText(_translate("charaSheet", "Submit HP"))
         self.label_34.setText(_translate("charaSheet", "Temp HP:"))
-
-    def profRolls(self):
-        pass
+        
     def raceSelection(self):
         if {self.raceSelect.currentText()} == '--SELECT RACE--':
             #base stats
