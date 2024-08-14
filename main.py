@@ -1,6 +1,32 @@
 import init
 import random
 
+def checkAbilityScore():
+    if init.inputStr > 20:
+        init.inputStr = 20
+    if init.inputWis > 20:
+        init.inputWis = 20
+    if init.inputDex > 20:
+        init.inputDex = 20
+    if init.inputCon > 20:
+        init.inputCon = 20
+    if init.inputCha > 20:
+        init.inputCha = 20
+    if init.inputInt > 20:
+        init.inputInt = 20
+    if init.stre > 20:
+        init.stre = 20
+    if init.wis > 20:
+        init.wis = 20
+    if init.cha > 20:
+        init.cha = 20
+    if init.con > 20:
+        init.con = 20
+    if init.intel > 20:
+        init.intel = 20
+    if init.dex > 20:
+        init.dex = 20
+
 def conditions():
     if init.blindness == 'true':
         init.perc = 0
