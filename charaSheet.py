@@ -189,6 +189,9 @@ class Ui_charaSheet(object):
         self.wisInp = QtWidgets.QLineEdit(self.centralwidget)
         self.wisInp.setGeometry(QtCore.QRect(650, 40, 31, 21))
         self.wisInp.setObjectName("wisInp")
+        self.setInp = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.setInput()) 
+        self.setInp.setGeometry(QtCore.QRect(690, 40, 80, 21))
+        self.setInp.setObjectName("setInp")
         self.lineEdit_9 = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEdit_9.setGeometry(QtCore.QRect(100, 40, 101, 20))
         self.lineEdit_9.setReadOnly(True)
@@ -676,6 +679,7 @@ class Ui_charaSheet(object):
         self.selectDice.setItemText(6, _translate("charaSheet", "d50"))
         self.selectDice.setItemText(7, _translate("charaSheet", "d100"))
         self.rollButt.setText(_translate("charaSheet", "Roll"))
+        self.setInp.setText(_translate("charaSheet", "Set Input"))
         self.rollModi.setText(_translate("charaSheet", "Modifier"))
         self.levelOutput.setText(_translate("charaSheet", "1"))
         self.strInp.setText(_translate("charaSheet", "10"))
@@ -789,6 +793,183 @@ class Ui_charaSheet(object):
         elif {self.raceSelect.currentText()} == 'Tiefling':
             #Tiefling stats
             pass
+    def setInput(self):
+        init.inputStr = int(self.strInp.text())
+        if init.inputStr > 20:
+            init.inputStr = 20
+            self.strInp.setText('20')
+        if init.inputStr < 1:
+            init.inputStr = 1
+            self.strInp.setText('1')
+        init.stre = init.inputStr+init.raceStrMod
+        if init.stre > 20:
+            init.stre=20
+        if init.stre < 1:
+            init.stre=1
+        init.inputDex=int(self.dexInp.text())
+        if init.inputDex > 20:
+            init.inputDex = 20
+            self.dexInp.setText('20')
+        if init.inputDex < 1:
+            init.inputDex = 1
+            self.dexInp.setText('1')
+        init.dex=init.inputDex+init.raceDexMod
+        if init.dex > 20:
+            init.dex=20
+        if init.dex < 1:
+            init.dex=1
+        init.inputCon=int(self.conInp.text())
+        if init.inputCon > 20:
+            init.inputCon = 20
+            self.conInp.setText('20')
+        if init.inputCon < 1:
+            init.inputCon = 1
+            self.conInp.setText('1')
+        init.con=init.inputCon+init.raceConMod
+        if init.con > 20:
+            init.con=20
+        if init.con < 1:
+            init.con=1
+        init.inputInt=int(self.intInp.text())
+        if init.inputInt > 20:
+            init.inputInt = 20
+            self.intInp.setText('20')
+        if init.inputInt < 1:
+            init.inputInt = 1
+            self.intInp.setText('1')
+        init.intel=init.inputInt+init.raceIntMod
+        if init.intel > 20:
+            init.intel=20
+        if init.intel < 1:
+            init.intel=1
+        init.inputWis=int(self.wisInp.text())
+        if init.inputWis > 20:
+            init.inputWis = 20
+            self.wisInp.setText('20')
+        if init.inputWis < 1:
+            init.inputWis = 1
+            self.wisInp.setText('1')
+        init.wis=init.inputWis+init.raceWisMod
+        if init.wis > 20:
+            init.wis=20
+        if init.wis < 1:
+            init.wis=1
+        init.inputCha=int(self.chaInp.text())
+        if init.inputCha > 20:
+            init.inputCha = 20
+            self.chaInp.setText('20')
+        if init.inputCha < 1:
+            init.inputCha = 1
+            self.chaInp.setText('1')
+        init.cha=init.inputCha+init.raceChaMod
+        if init.cha > 20:
+            init.cha=20
+        if init.cha < 1:
+            init.cha=1
+        if init.stre == 1:
+            self.strR.setText('-5')
+            if self.athlPro.isChecked == True:
+                text=-5+init.profBonus
+                if text > -1:
+                    self.athlR.setText(f'+{text}')
+                else:
+                    self.athlR.setText(f'-{text}')
+            elif self.athlPro.isChecked == False:
+                self.athlR.setText('-5')
+            init.strMod = -5
+        elif init.stre >1 and init.stre < 4:
+            self.strR.setText('-4')
+            if self.athlPro.isChecked == True:
+                text=-4+init.profBonus
+                if text > -1:
+                    self.athlR.setText(f'+{text}')
+                else:
+                    self.athlR.setText(f'-{text}')
+            elif self.athlPro.isChecked == False:
+                self.athlR.setText('-4')
+            init.strMod = -4
+        elif init.stre > 3 and init.stre < 6:
+            self.strR.setText('-3')
+            if self.athlPro.isChecked == True:
+                text=-3+init.profBonus
+                if text > -1:
+                    self.athlR.setText(f'+{text}')
+                else:
+                    self.athlR.setText(f'-{text}')
+            elif self.athlPro.isChecked == False:
+                self.athlR.setText('-3')
+            init.strMod = -3
+        elif init.stre > 5 and init.stre < 8:
+            self.strR.setText('-2')
+            if self.athlPro.isChecked == True:
+                text=-2+init.profBonus
+                if text > -1:
+                    self.athlR.setText(f'+{text}')
+                else:
+                    self.athlR.setText(f'-{text}')
+            elif self.athlPro.isChecked == False:
+                self.athlR.setText('-2')
+            init.strMod = -2
+        elif init.stre > 7 and init.stre < 10:
+            self.strR.setText('-1')
+            if self.athlPro.isChecked == True:
+                text=-1+init.profBonus
+                if text > -1:
+                    self.athlR.setText(f'+{text}')
+                else:
+                    self.athlR.setText(f'-{text}')
+            elif self.athlPro.isChecked == False:
+                self.athlR.setText('-1')
+            init.strMod = -1
+        elif init.stre > 9 and init.stre < 12:
+            self.strR.setText('+0')
+            if self.athlPro.isChecked == True:
+                text=0+init.profBonus
+                self.athlR.setText(f'+{text}')
+            elif self.athlPro.isChecked == False:
+                self.athlR.setText('+0')
+            init.strMod = 0
+        elif init.stre > 11 and init.stre < 14:
+            self.strR.setText('+1')
+            if self.athlPro.isChecked == True:
+                text=1+init.profBonus
+                self.athlR.setText(f'+{text}')
+            elif self.athlPro.isChecked == False:
+                self.athlR.setText('+1')
+            init.strMod = 1
+        elif init.stre > 13 and init.stre < 16:
+            self.strR.setText('+2')
+            if self.athlPro.isChecked == True:
+                text=2+init.profBonus
+                self.athlR.setText(f'+{text}')
+            elif self.athlPro.isChecked == False:
+                self.athlR.setText('+2')
+            init.strMod = 2
+        elif init.stre > 15 and init.stre < 18:
+            self.strR.setText('+3')
+            if self.athlPro.isChecked == True:
+                text=3+init.profBonus
+                self.athlR.setText(f'+{text}')
+            elif self.athlPro.isChecked == False:
+                self.athlR.setText('+3')
+            init.strMod = 3
+        elif init.stre > 17 and init.stre < 20:
+            self.strR.setText('+4')
+            if self.athlPro.isChecked == True:
+                text=4+init.profBonus
+                self.athlR.setText(f'+{text}')
+            elif self.athlPro.isChecked == False:
+                self.athlR.setText('+4')
+            init.strMod = 4
+        elif init.stre == 20:
+            self.strR.setText('+5')
+            if self.athlPro.isChecked == True:
+                text=5+init.profBonus
+                self.athlR.setText(f'+{text}')
+            elif self.athlPro.isChecked == False:
+                self.athlR.setText('+5')
+            init.strMod = 5
+
     def rollFunc(self):
         if self.rollModi.text() == 'Modifier':
             rollModi = 0
