@@ -1,5 +1,6 @@
 import init
 import random
+import charaSheet
 
 def checkAbilityScore():
     if init.inputStr > 20:
@@ -111,11 +112,13 @@ def conRoll():
     print(init.roll)
 
 def acroRoll():
-    if init.acroProf == 'true':
+    if charaSheet.self.acroPro.isChecked() == True:
+    #if init.acroProf == 'true':
         init.roll=random.randint(1,20)
         init.roll=init.roll+init.dexMod+init.profBonus
         print(init.roll)
-    elif init.acroProf == 'false':
+    elif charaSheet.self.acroPro.isChecked() == False:
+    #elif init.acroProf == 'false':
         init.roll=random.randint(1,20)
         init.roll=init.roll+init.dexMod
         print(init.roll)
