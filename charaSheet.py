@@ -142,11 +142,11 @@ class Ui_charaSheet(object):
         #self.toSaves.clicked.connect(self.saves)
         #self.toSaves.clicked.connect(charaSheet.close)
         self.rollLog = QtWidgets.QTextBrowser(self.centralwidget)
-        self.rollLog.setGeometry(QtCore.QRect(800, 140, 130, 241))
+        self.rollLog.setGeometry(QtCore.QRect(870, 140, 130, 241))
         self.rollLog.setReadOnly(True)
         self.rollLog.setObjectName("rollLog")
         self.selectDice = QtWidgets.QComboBox(self.centralwidget)
-        self.selectDice.setGeometry(QtCore.QRect(860, 101, 70, 20))
+        self.selectDice.setGeometry(QtCore.QRect(930, 101, 70, 20))
         self.selectDice.setObjectName("selectDice")
         self.selectDice.addItem("")
         self.selectDice.addItem("")
@@ -157,68 +157,61 @@ class Ui_charaSheet(object):
         self.selectDice.addItem("")
         self.selectDice.addItem("")
         self.rollButt = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.rollFunc()) 
-        self.rollButt.setGeometry(QtCore.QRect(800, 70, 51, 51))
+        self.rollButt.setGeometry(QtCore.QRect(870, 70, 51, 51))
         self.rollButt.setObjectName("rollButt")
         self.rollModi = QtWidgets.QLineEdit(self.centralwidget)
-        self.rollModi.setGeometry(QtCore.QRect(860, 70, 70, 21))
+        self.rollModi.setGeometry(QtCore.QRect(930, 70, 70, 21))
         self.rollModi.setObjectName("rollModi")
         self.levelOutput = QtWidgets.QLineEdit(self.centralwidget)
         self.levelOutput.setGeometry(QtCore.QRect(230, 10, 25, 21))
         self.levelOutput.setReadOnly(True)
         self.levelOutput.setObjectName("levelOutput")
         self.strInp = QtWidgets.QLineEdit(self.centralwidget)
-        self.strInp.setGeometry(QtCore.QRect(250, 40, 31, 21))
+        self.strInp.setGeometry(QtCore.QRect(285, 40, 31, 21))
         self.strInp.setInputMethodHints(QtCore.Qt.ImhPreferNumbers)
         self.strInp.setObjectName("strInp")
         self.dexInp = QtWidgets.QLineEdit(self.centralwidget)
-        self.dexInp.setGeometry(QtCore.QRect(330, 40, 31, 21))
+        self.dexInp.setGeometry(QtCore.QRect(365, 40, 31, 21))
         self.dexInp.setInputMethodHints(QtCore.Qt.ImhPreferNumbers)
         self.dexInp.setObjectName("dexInp")
         self.conInp = QtWidgets.QLineEdit(self.centralwidget)
-        self.conInp.setGeometry(QtCore.QRect(410, 40, 31, 21))
+        self.conInp.setGeometry(QtCore.QRect(445, 40, 31, 21))
         self.conInp.setInputMethodHints(QtCore.Qt.ImhPreferNumbers)
         self.conInp.setObjectName("conInp")
         self.intInp = QtWidgets.QLineEdit(self.centralwidget)
-        self.intInp.setGeometry(QtCore.QRect(490, 40, 31, 21))
+        self.intInp.setGeometry(QtCore.QRect(525, 40, 31, 21))
         self.intInp.setInputMethodHints(QtCore.Qt.ImhPreferNumbers)
         self.intInp.setObjectName("intInp")
         self.chaInp = QtWidgets.QLineEdit(self.centralwidget)
-        self.chaInp.setGeometry(QtCore.QRect(570, 40, 31, 21))
+        self.chaInp.setGeometry(QtCore.QRect(605, 40, 31, 21))
         self.chaInp.setInputMethodHints(QtCore.Qt.ImhPreferNumbers)
         self.chaInp.setObjectName("chaInp")
         self.wisInp = QtWidgets.QLineEdit(self.centralwidget)
-        self.wisInp.setGeometry(QtCore.QRect(650, 40, 31, 21))
+        self.wisInp.setGeometry(QtCore.QRect(685, 40, 31, 21))
         self.wisInp.setObjectName("wisInp")
         self.setInp = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.setInput()) 
-        self.setInp.setGeometry(QtCore.QRect(690, 40, 80, 21))
+        self.setInp.setGeometry(QtCore.QRect(725, 40, 80, 21))
         self.setInp.setObjectName("setInp")
-        self.lineEdit_9 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_9.setGeometry(QtCore.QRect(100, 40, 101, 20))
-        self.lineEdit_9.setReadOnly(True)
+        self.lineEdit_9 = QtWidgets.QLabel(self.centralwidget)
+        self.lineEdit_9.setGeometry(QtCore.QRect(100, 40, 151, 20))
         self.lineEdit_9.setObjectName("lineEdit_9")
-        self.lineEdit_10 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_10.setGeometry(QtCore.QRect(210, 40, 31, 20))
-        self.lineEdit_10.setReadOnly(True)
+        self.lineEdit_10 = QtWidgets.QLabel(self.centralwidget)
+        self.lineEdit_10.setGeometry(QtCore.QRect(245, 40, 31, 20))
         self.lineEdit_10.setObjectName("lineEdit_10")
-        self.lineEdit_11 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_11.setGeometry(QtCore.QRect(290, 40, 31, 20))
-        self.lineEdit_11.setReadOnly(True)
+        self.lineEdit_11 = QtWidgets.QLabel(self.centralwidget)
+        self.lineEdit_11.setGeometry(QtCore.QRect(325, 40, 31, 20))
         self.lineEdit_11.setObjectName("lineEdit_11")
-        self.lineEdit_12 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_12.setGeometry(QtCore.QRect(370, 40, 31, 20))
-        self.lineEdit_12.setReadOnly(True)
+        self.lineEdit_12 = QtWidgets.QLabel(self.centralwidget)
+        self.lineEdit_12.setGeometry(QtCore.QRect(405, 40, 31, 20))
         self.lineEdit_12.setObjectName("lineEdit_12")
-        self.lineEdit_13 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_13.setGeometry(QtCore.QRect(450, 40, 31, 20))
-        self.lineEdit_13.setReadOnly(True)
+        self.lineEdit_13 = QtWidgets.QLabel(self.centralwidget)
+        self.lineEdit_13.setGeometry(QtCore.QRect(485, 40, 31, 20))
         self.lineEdit_13.setObjectName("lineEdit_13")
-        self.lineEdit_14 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_14.setGeometry(QtCore.QRect(530, 40, 31, 20))
-        self.lineEdit_14.setReadOnly(True)
+        self.lineEdit_14 = QtWidgets.QLabel(self.centralwidget)
+        self.lineEdit_14.setGeometry(QtCore.QRect(565, 40, 31, 20))
         self.lineEdit_14.setObjectName("lineEdit_14")
-        self.lineEdit_15 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_15.setGeometry(QtCore.QRect(610, 40, 31, 20))
-        self.lineEdit_15.setAutoFillBackground(True)
+        self.lineEdit_15 = QtWidgets.QLabel(self.centralwidget)
+        self.lineEdit_15.setGeometry(QtCore.QRect(645, 40, 50, 20))
         self.lineEdit_15.setObjectName("lineEdit_15")
         self.strR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.strRoll())
         self.strR.setGeometry(QtCore.QRect(100, 100, 51, 51))
@@ -298,37 +291,37 @@ class Ui_charaSheet(object):
         font.setPointSize(10)
         self.label_7.setFont(font)
         self.label_7.setObjectName("label_7")
-        self.strSave = QtWidgets.QPushButton(self.centralwidget)
+        self.strSave = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.strSaveR())
         self.strSave.setGeometry(QtCore.QRect(90, 200, 41, 41))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.strSave.setFont(font)
         self.strSave.setObjectName("strSave")
-        self.dexSave = QtWidgets.QPushButton(self.centralwidget)
+        self.dexSave = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.dexSaveR())
         self.dexSave.setGeometry(QtCore.QRect(170, 200, 41, 41))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.dexSave.setFont(font)
         self.dexSave.setObjectName("dexSave")
-        self.conSave = QtWidgets.QPushButton(self.centralwidget)
+        self.conSave = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.conSaveR())
         self.conSave.setGeometry(QtCore.QRect(90, 270, 41, 41))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.conSave.setFont(font)
         self.conSave.setObjectName("conSave")
-        self.intSave = QtWidgets.QPushButton(self.centralwidget)
+        self.intSave = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.intSaveR())
         self.intSave.setGeometry(QtCore.QRect(170, 270, 41, 41))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.intSave.setFont(font)
         self.intSave.setObjectName("intSave")
-        self.chaSave = QtWidgets.QPushButton(self.centralwidget)
+        self.chaSave = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.chaSaveR())
         self.chaSave.setGeometry(QtCore.QRect(90, 340, 41, 41))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.chaSave.setFont(font)
         self.chaSave.setObjectName("chaSave")
-        self.wisSave = QtWidgets.QPushButton(self.centralwidget)
+        self.wisSave = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.wisSaveR())
         self.wisSave.setGeometry(QtCore.QRect(170, 340, 41, 41))
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -371,190 +364,190 @@ class Ui_charaSheet(object):
         self.label_13.setFont(font)
         self.label_13.setObjectName("label_13")
         self.label_14 = QtWidgets.QLabel(self.centralwidget)
-        self.label_14.setGeometry(QtCore.QRect(450, 150, 50, 31))
+        self.label_14.setGeometry(QtCore.QRect(470, 150, 50, 31))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_14.setFont(font)
         self.label_14.setObjectName("label_14")
         self.label_15 = QtWidgets.QLabel(self.centralwidget)
-        self.label_15.setGeometry(QtCore.QRect(260, 190, 81, 16))
+        self.label_15.setGeometry(QtCore.QRect(240, 190, 160, 16))
         self.label_15.setObjectName("label_15")
         self.label_16 = QtWidgets.QLabel(self.centralwidget)
-        self.label_16.setGeometry(QtCore.QRect(260, 220, 101, 16))
+        self.label_16.setGeometry(QtCore.QRect(240, 220, 160, 16))
         self.label_16.setObjectName("label_16")
         self.label_17 = QtWidgets.QLabel(self.centralwidget)
-        self.label_17.setGeometry(QtCore.QRect(260, 250, 61, 16))
+        self.label_17.setGeometry(QtCore.QRect(240, 250, 160, 16))
         self.label_17.setObjectName("label_17")
         self.label_18 = QtWidgets.QLabel(self.centralwidget)
-        self.label_18.setGeometry(QtCore.QRect(260, 280, 71, 16))
+        self.label_18.setGeometry(QtCore.QRect(240, 280, 160, 16))
         self.label_18.setObjectName("label_18")
         self.label_19 = QtWidgets.QLabel(self.centralwidget)
-        self.label_19.setGeometry(QtCore.QRect(260, 310, 81, 16))
+        self.label_19.setGeometry(QtCore.QRect(240, 310, 160, 16))
         self.label_19.setObjectName("label_19")
         self.label_20 = QtWidgets.QLabel(self.centralwidget)
-        self.label_20.setGeometry(QtCore.QRect(260, 340, 61, 16))
+        self.label_20.setGeometry(QtCore.QRect(240, 340, 150, 16))
         self.label_20.setObjectName("label_20")
         self.label_21 = QtWidgets.QLabel(self.centralwidget)
-        self.label_21.setGeometry(QtCore.QRect(430, 190, 61, 16))
+        self.label_21.setGeometry(QtCore.QRect(470, 190, 150, 16))
         self.label_21.setObjectName("label_21")
         self.label_22 = QtWidgets.QLabel(self.centralwidget)
-        self.label_22.setGeometry(QtCore.QRect(430, 220, 91, 16))
+        self.label_22.setGeometry(QtCore.QRect(470, 220, 150, 16))
         self.label_22.setObjectName("label_22")
         self.label_23 = QtWidgets.QLabel(self.centralwidget)
-        self.label_23.setGeometry(QtCore.QRect(430, 250, 91, 16))
+        self.label_23.setGeometry(QtCore.QRect(470, 250, 150, 16))
         self.label_23.setObjectName("label_23")
         self.label_24 = QtWidgets.QLabel(self.centralwidget)
-        self.label_24.setGeometry(QtCore.QRect(430, 280, 71, 16))
+        self.label_24.setGeometry(QtCore.QRect(470, 280, 150, 16))
         self.label_24.setObjectName("label_24")
         self.label_25 = QtWidgets.QLabel(self.centralwidget)
-        self.label_25.setGeometry(QtCore.QRect(430, 310, 61, 16))
+        self.label_25.setGeometry(QtCore.QRect(470, 310, 150, 16))
         self.label_25.setObjectName("label_25")
         self.label_26 = QtWidgets.QLabel(self.centralwidget)
-        self.label_26.setGeometry(QtCore.QRect(430, 340, 81, 16))
+        self.label_26.setGeometry(QtCore.QRect(470, 340, 150, 16))
         self.label_26.setObjectName("label_26")
         self.label_27 = QtWidgets.QLabel(self.centralwidget)
-        self.label_27.setGeometry(QtCore.QRect(590, 220, 81, 16))
+        self.label_27.setGeometry(QtCore.QRect(670, 220, 150, 16))
         self.label_27.setObjectName("label_27")
         self.label_28 = QtWidgets.QLabel(self.centralwidget)
-        self.label_28.setGeometry(QtCore.QRect(590, 250, 61, 16))
+        self.label_28.setGeometry(QtCore.QRect(670, 250, 150, 16))
         self.label_28.setObjectName("label_28")
         self.label_29 = QtWidgets.QLabel(self.centralwidget)
-        self.label_29.setGeometry(QtCore.QRect(590, 190, 91, 16))
+        self.label_29.setGeometry(QtCore.QRect(670, 190, 150, 16))
         self.label_29.setObjectName("label_29")
         self.label_30 = QtWidgets.QLabel(self.centralwidget)
-        self.label_30.setGeometry(QtCore.QRect(590, 280, 101, 16))
+        self.label_30.setGeometry(QtCore.QRect(670, 280, 170, 16))
         self.label_30.setObjectName("label_30")
         self.label_31 = QtWidgets.QLabel(self.centralwidget)
-        self.label_31.setGeometry(QtCore.QRect(590, 310, 81, 16))
+        self.label_31.setGeometry(QtCore.QRect(670, 310, 150, 16))
         self.label_31.setObjectName("label_31")
         self.label_32 = QtWidgets.QLabel(self.centralwidget)
-        self.label_32.setGeometry(QtCore.QRect(590, 340, 71, 16))
+        self.label_32.setGeometry(QtCore.QRect(670, 340, 150, 16))
         self.label_32.setObjectName("label_32")
         self.acroPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.acroPro.setGeometry(QtCore.QRect(240, 190, 21, 17))
+        self.acroPro.setGeometry(QtCore.QRect(220, 190, 21, 17))
         self.acroPro.setText("")
         self.acroPro.setObjectName("acroPro")
         self.animPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.animPro.setGeometry(QtCore.QRect(240, 220, 21, 17))
+        self.animPro.setGeometry(QtCore.QRect(220, 220, 21, 17))
         self.animPro.setText("")
         self.animPro.setObjectName("animPro")
         self.arcaPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.arcaPro.setGeometry(QtCore.QRect(240, 250, 21, 17))
+        self.arcaPro.setGeometry(QtCore.QRect(220, 250, 21, 17))
         self.arcaPro.setText("")
         self.arcaPro.setObjectName("arcaPro")
         self.athlPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.athlPro.setGeometry(QtCore.QRect(240, 280, 21, 17))
+        self.athlPro.setGeometry(QtCore.QRect(220, 280, 21, 17))
         self.athlPro.setText("")
         self.athlPro.setObjectName("athlPro")
         self.decePro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.decePro.setGeometry(QtCore.QRect(240, 310, 21, 17))
+        self.decePro.setGeometry(QtCore.QRect(220, 310, 21, 17))
         self.decePro.setText("")
         self.decePro.setObjectName("decePro")
         self.histPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.histPro.setGeometry(QtCore.QRect(240, 340, 21, 17))
+        self.histPro.setGeometry(QtCore.QRect(220, 340, 21, 17))
         self.histPro.setText("")
         self.histPro.setObjectName("histPro")
         self.insiPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.insiPro.setGeometry(QtCore.QRect(410, 190, 21, 17))
+        self.insiPro.setGeometry(QtCore.QRect(450, 190, 21, 17))
         self.insiPro.setText("")
         self.insiPro.setObjectName("insiPro")
         self.intiPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.intiPro.setGeometry(QtCore.QRect(410, 220, 21, 17))
+        self.intiPro.setGeometry(QtCore.QRect(450, 220, 21, 17))
         self.intiPro.setText("")
         self.intiPro.setObjectName("intiPro")
         self.invePro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.invePro.setGeometry(QtCore.QRect(410, 250, 21, 17))
+        self.invePro.setGeometry(QtCore.QRect(450, 250, 21, 17))
         self.invePro.setText("")
         self.invePro.setObjectName("invePro")
         self.mediPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.mediPro.setGeometry(QtCore.QRect(410, 280, 21, 17))
+        self.mediPro.setGeometry(QtCore.QRect(450, 280, 21, 17))
         self.mediPro.setText("")
         self.mediPro.setObjectName("mediPro")
         self.natuPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.natuPro.setGeometry(QtCore.QRect(410, 310, 21, 17))
+        self.natuPro.setGeometry(QtCore.QRect(450, 310, 21, 17))
         self.natuPro.setText("")
         self.natuPro.setObjectName("natuPro")
         self.percPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.percPro.setGeometry(QtCore.QRect(410, 340, 21, 17))
+        self.percPro.setGeometry(QtCore.QRect(450, 340, 21, 17))
         self.percPro.setText("")
         self.percPro.setObjectName("percPro")
         self.perfPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.perfPro.setGeometry(QtCore.QRect(570, 190, 21, 17))
+        self.perfPro.setGeometry(QtCore.QRect(650, 190, 21, 17))
         self.perfPro.setText("")
         self.perfPro.setObjectName("perfPro")
         self.persPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.persPro.setGeometry(QtCore.QRect(570, 220, 21, 17))
+        self.persPro.setGeometry(QtCore.QRect(650, 220, 21, 17))
         self.persPro.setText("")
         self.persPro.setObjectName("persPro")
         self.reliPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.reliPro.setGeometry(QtCore.QRect(570, 250, 21, 17))
+        self.reliPro.setGeometry(QtCore.QRect(650, 250, 21, 17))
         self.reliPro.setText("")
         self.reliPro.setObjectName("reliPro")
         self.sleiPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.sleiPro.setGeometry(QtCore.QRect(570, 280, 21, 17))
+        self.sleiPro.setGeometry(QtCore.QRect(650, 280, 21, 17))
         self.sleiPro.setText("")
         self.sleiPro.setObjectName("sleiPro")
         self.steaPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.steaPro.setGeometry(QtCore.QRect(570, 310, 21, 17))
+        self.steaPro.setGeometry(QtCore.QRect(650, 310, 21, 17))
         self.steaPro.setText("")
         self.steaPro.setObjectName("steaPro")
         self.survPro = QtWidgets.QCheckBox(self.centralwidget, clicked= lambda: self.setInput())
-        self.survPro.setGeometry(QtCore.QRect(570, 340, 21, 17))
+        self.survPro.setGeometry(QtCore.QRect(650, 340, 21, 17))
         self.survPro.setText("")
         self.survPro.setObjectName("survPro")
         self.acroR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.acroRoll())
-        self.acroR.setGeometry(QtCore.QRect(370, 190, 31, 21))
+        self.acroR.setGeometry(QtCore.QRect(410, 190, 31, 21))
         self.acroR.setObjectName("acroR")
         self.animR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.animRoll())
-        self.animR.setGeometry(QtCore.QRect(370, 220, 31, 21))
+        self.animR.setGeometry(QtCore.QRect(410, 220, 31, 21))
         self.animR.setObjectName("animR")
         self.arcaR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.arcaRoll())
-        self.arcaR.setGeometry(QtCore.QRect(370, 250, 31, 21))
+        self.arcaR.setGeometry(QtCore.QRect(410, 250, 31, 21))
         self.arcaR.setObjectName("arcaR")
         self.athlR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.athlRoll())
-        self.athlR.setGeometry(QtCore.QRect(370, 280, 31, 21))
+        self.athlR.setGeometry(QtCore.QRect(410, 280, 31, 21))
         self.athlR.setObjectName("athlR")
         self.deceR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.deceRoll())
-        self.deceR.setGeometry(QtCore.QRect(370, 310, 31, 21))
+        self.deceR.setGeometry(QtCore.QRect(410, 310, 31, 21))
         self.deceR.setObjectName("deceR")
         self.histR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.histRoll())
-        self.histR.setGeometry(QtCore.QRect(370, 340, 31, 21))
+        self.histR.setGeometry(QtCore.QRect(410, 340, 31, 21))
         self.histR.setObjectName("histR")
         self.insiR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.insiRoll())
-        self.insiR.setGeometry(QtCore.QRect(530, 190, 31, 21))
+        self.insiR.setGeometry(QtCore.QRect(610, 190, 31, 21))
         self.insiR.setObjectName("insiR")
         self.intiR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.intiRoll())
-        self.intiR.setGeometry(QtCore.QRect(530, 220, 31, 21))
+        self.intiR.setGeometry(QtCore.QRect(610, 220, 31, 21))
         self.intiR.setObjectName("intiR")
         self.inveR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.inveRoll())
-        self.inveR.setGeometry(QtCore.QRect(530, 250, 31, 21))
+        self.inveR.setGeometry(QtCore.QRect(610, 250, 31, 21))
         self.inveR.setObjectName("inveR")
         self.mediR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.mediRoll())
-        self.mediR.setGeometry(QtCore.QRect(530, 280, 31, 21))
+        self.mediR.setGeometry(QtCore.QRect(610, 280, 31, 21))
         self.mediR.setObjectName("mediR")
         self.natuR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.natuRoll())
-        self.natuR.setGeometry(QtCore.QRect(530, 310, 31, 21))
+        self.natuR.setGeometry(QtCore.QRect(610, 310, 31, 21))
         self.natuR.setObjectName("natuR")
         self.percR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.percRoll())
-        self.percR.setGeometry(QtCore.QRect(530, 340, 31, 21))
+        self.percR.setGeometry(QtCore.QRect(610, 340, 31, 21))
         self.percR.setObjectName("percR")
         self.perfR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.perfRoll())
-        self.perfR.setGeometry(QtCore.QRect(700, 190, 31, 21))
+        self.perfR.setGeometry(QtCore.QRect(830, 190, 31, 21))
         self.perfR.setObjectName("perfR")
         self.persR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.persRoll())
-        self.persR.setGeometry(QtCore.QRect(700, 220, 31, 21))
+        self.persR.setGeometry(QtCore.QRect(830, 220, 31, 21))
         self.persR.setObjectName("persR")
         self.reliR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.reliRoll())
-        self.reliR.setGeometry(QtCore.QRect(700, 250, 31, 21))
+        self.reliR.setGeometry(QtCore.QRect(830, 250, 31, 21))
         self.reliR.setObjectName("reliR")
         self.sleiR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.sleiRoll())
-        self.sleiR.setGeometry(QtCore.QRect(700, 280, 31, 21))
+        self.sleiR.setGeometry(QtCore.QRect(830, 280, 31, 21))
         self.sleiR.setObjectName("sleiR")
         self.steaR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.steaRoll())
-        self.steaR.setGeometry(QtCore.QRect(700, 310, 31, 21))
+        self.steaR.setGeometry(QtCore.QRect(830, 310, 31, 21))
         self.steaR.setObjectName("steaR")
         self.survR = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.survRoll())
-        self.survR.setGeometry(QtCore.QRect(700, 340, 31, 21))
+        self.survR.setGeometry(QtCore.QRect(830, 340, 31, 21))
         self.survR.setObjectName("survR")
         self.label_33 = QtWidgets.QLabel(self.centralwidget)
         self.label_33.setGeometry(QtCore.QRect(560, 10, 50, 13))
@@ -563,24 +556,24 @@ class Ui_charaSheet(object):
         self.label_33.setFont(font)
         self.label_33.setObjectName("label_33")
         self.hpBox = QtWidgets.QLineEdit(self.centralwidget)
-        self.hpBox.setGeometry(QtCore.QRect(590, 10, 50, 20))
+        self.hpBox.setGeometry(QtCore.QRect(590, 10, 80, 20))
         self.hpBox.setReadOnly(True)
         self.hpBox.setObjectName("hpBox")
         self.lineEdit_17 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_17.setGeometry(QtCore.QRect(650, 10, 50, 20))
+        self.lineEdit_17.setGeometry(QtCore.QRect(680, 10, 50, 20))
         self.lineEdit_17.setInputMethodHints(QtCore.Qt.ImhPreferNumbers)
         self.lineEdit_17.setObjectName("lineEdit_17")
         self.submitHp = QtWidgets.QPushButton(self.centralwidget)
-        self.submitHp.setGeometry(QtCore.QRect(710, 10, 85, 23))
+        self.submitHp.setGeometry(QtCore.QRect(740, 10, 85, 23))
         self.submitHp.setObjectName("submitHp")
         self.label_34 = QtWidgets.QLabel(self.centralwidget)
-        self.label_34.setGeometry(QtCore.QRect(800, 10, 90, 16))
+        self.label_34.setGeometry(QtCore.QRect(830, 10, 90, 16))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_34.setFont(font)
         self.label_34.setObjectName("label_34")
         self.tempHpBox = QtWidgets.QLineEdit(self.centralwidget)
-        self.tempHpBox.setGeometry(QtCore.QRect(890, 10, 80, 20))
+        self.tempHpBox.setGeometry(QtCore.QRect(920, 10, 80, 20))
         self.tempHpBox.setInputMethodHints(QtCore.Qt.ImhPreferNumbers)
         self.tempHpBox.setObjectName("tempHpBox")
         charaSheet.setCentralWidget(self.centralwidget)
@@ -793,7 +786,7 @@ class Ui_charaSheet(object):
         elif {self.raceSelect.currentText()} == 'Tiefling':
             #Tiefling stats
             pass
-        
+
     def setInput(self):
         init.inputStr = int(self.strInp.text())
         if init.inputStr > 20:
@@ -869,6 +862,13 @@ class Ui_charaSheet(object):
             init.cha=1
         if init.stre == 1:
             self.strR.setText('-5')
+            self.strSave.setText('-5')
+            if init.strProf == True:
+                text=-5+init.profBonus
+                if text > -1:
+                    self.strSave.setText(f'+{text}')
+                else:
+                    self.strSave.setText(f'{text}')
             if self.athlPro.isChecked() == True:
                 text=-5+init.profBonus
                 if text > -1:
@@ -880,6 +880,13 @@ class Ui_charaSheet(object):
             init.strMod = -5
         elif init.stre >1 and init.stre < 4:
             self.strR.setText('-4')
+            self.strSave.setText('-4')
+            if init.strProf == True:
+                text=-4+init.profBonus
+                if text > -1:
+                    self.strSave.setText(f'+{text}')
+                else:
+                    self.strSave.setText(f'{text}')
             if self.athlPro.isChecked() == True:
                 text=-4+init.profBonus
                 if text > -1:
@@ -891,6 +898,13 @@ class Ui_charaSheet(object):
             init.strMod = -4
         elif init.stre > 3 and init.stre < 6:
             self.strR.setText('-3')
+            self.strSave.setText('-3')
+            if init.strProf == True:
+                text=-3+init.profBonus
+                if text > -1:
+                    self.strSave.setText(f'+{text}')
+                else:
+                    self.strSave.setText(f'{text}')
             if self.athlPro.isChecked() == True:
                 text=-3+init.profBonus
                 if text > -1:
@@ -902,6 +916,13 @@ class Ui_charaSheet(object):
             init.strMod = -3
         elif init.stre > 5 and init.stre < 8:
             self.strR.setText('-2')
+            self.strSave.setText('-2')
+            if init.strProf == True:
+                text=-2+init.profBonus
+                if text > -1:
+                    self.strSave.setText(f'+{text}')
+                else:
+                    self.strSave.setText(f'{text}')
             if self.athlPro.isChecked() == True:
                 text=-2+init.profBonus
                 if text > -1:
@@ -913,6 +934,13 @@ class Ui_charaSheet(object):
             init.strMod = -2
         elif init.stre > 7 and init.stre < 10:
             self.strR.setText('-1')
+            self.strSave.setText('-1')
+            if init.strProf == True:
+                text=-1+init.profBonus
+                if text > -1:
+                    self.strSave.setText(f'+{text}')
+                else:
+                    self.strSave.setText(f'{text}')
             if self.athlPro.isChecked() == True:
                 text=-1+init.profBonus
                 if text > -1:
@@ -924,6 +952,10 @@ class Ui_charaSheet(object):
             init.strMod = -1
         elif init.stre > 9 and init.stre < 12:
             self.strR.setText('+0')
+            self.strSave.setText('+0')
+            if init.strProf == True:
+                text=0+init.profBonus
+                self.strSave.setText(f'+{text}')
             if self.athlPro.isChecked() == True:
                 text=0+init.profBonus
                 self.athlR.setText(f'+{text}')
@@ -932,6 +964,10 @@ class Ui_charaSheet(object):
             init.strMod = 0
         elif init.stre > 11 and init.stre < 14:
             self.strR.setText('+1')
+            self.strSave.setText('+1')
+            if init.strProf == True:
+                text=1+init.profBonus
+                self.strSave.setText(f'+{text}')
             if self.athlPro.isChecked() == True:
                 text=1+init.profBonus
                 self.athlR.setText(f'+{text}')
@@ -940,6 +976,10 @@ class Ui_charaSheet(object):
             init.strMod = 1
         elif init.stre > 13 and init.stre < 16:
             self.strR.setText('+2')
+            self.strSave.setText('+2')
+            if init.strProf == True:
+                text=2+init.profBonus
+                self.strSave.setText(f'+{text}')
             if self.athlPro.isChecked() == True:
                 text=2+init.profBonus
                 self.athlR.setText(f'+{text}')
@@ -948,6 +988,10 @@ class Ui_charaSheet(object):
             init.strMod = 2
         elif init.stre > 15 and init.stre < 18:
             self.strR.setText('+3')
+            self.strSave.setText('+3')
+            if init.strProf == True:
+                text=3+init.profBonus
+                self.strSave.setText(f'+{text}')
             if self.athlPro.isChecked() == True:
                 text=3+init.profBonus
                 self.athlR.setText(f'+{text}')
@@ -956,6 +1000,10 @@ class Ui_charaSheet(object):
             init.strMod = 3
         elif init.stre > 17 and init.stre < 20:
             self.strR.setText('+4')
+            self.strSave.setText('+4')
+            if init.strProf == True:
+                text=4+init.profBonus
+                self.strSave.setText(f'+{text}')
             if self.athlPro.isChecked() == True:
                 text=4+init.profBonus
                 self.athlR.setText(f'+{text}')
@@ -964,6 +1012,10 @@ class Ui_charaSheet(object):
             init.strMod = 4
         elif init.stre == 20:
             self.strR.setText('+5')
+            self.strSave.setText('+5')
+            if init.strProf == True:
+                text=5+init.profBonus
+                self.strSave.setText(f'+{text}')
             if self.athlPro.isChecked() == True:
                 text=5+init.profBonus
                 self.athlR.setText(f'+{text}')
@@ -972,6 +1024,13 @@ class Ui_charaSheet(object):
             init.strMod = 5
         if init.dex == 1:
             self.dexR.setText('-5')
+            self.dexSave.setText('-5')
+            if init.dexProf == True:
+                text=-5+init.profBonus
+                if text > -1:
+                    self.dexSave.setText(f'+{text}')
+                else:
+                    self.dexSave.setText(f'{text}')
             if self.acroPro.isChecked() == True:
                 text=-5+init.profBonus
                 if text > -1:
@@ -999,6 +1058,13 @@ class Ui_charaSheet(object):
             init.dexMod = -5
         elif init.dex >1 and init.dex < 4:
             self.dexR.setText('-4')
+            self.dexSave.setText('-4')
+            if init.dexProf == True:
+                text=-4+init.profBonus
+                if text > -1:
+                    self.dexSave.setText(f'+{text}')
+                else:
+                    self.dexSave.setText(f'{text}')
             if self.acroPro.isChecked() == True:
                 text=-4+init.profBonus
                 if text > -1:
@@ -1026,6 +1092,13 @@ class Ui_charaSheet(object):
             init.dexMod = -4
         elif init.dex > 3 and init.dex < 6:
             self.dexR.setText('-3')
+            self.dexSave.setText('-3')
+            if init.dexProf == True:
+                text=-3+init.profBonus
+                if text > -1:
+                    self.dexSave.setText(f'+{text}')
+                else:
+                    self.dexSave.setText(f'{text}')
             if self.acroPro.isChecked() == True:
                 text=-3+init.profBonus
                 if text > -1:
@@ -1053,6 +1126,13 @@ class Ui_charaSheet(object):
             init.dexMod = -3
         elif init.dex > 5 and init.dex < 8:
             self.dexR.setText('-2')
+            self.dexSave.setText('-2')
+            if init.dexProf == True:
+                text=-2+init.profBonus
+                if text > -1:
+                    self.dexSave.setText(f'+{text}')
+                else:
+                    self.dexSave.setText(f'{text}')
             if self.acroPro.isChecked() == True:
                 text=-2+init.profBonus
                 if text > -1:
@@ -1082,6 +1162,13 @@ class Ui_charaSheet(object):
             init.dexMod = -2
         elif init.dex > 7 and init.dex < 10:
             self.dexR.setText('-1')
+            self.dexSave.setText('-1')
+            if init.dexProf == True:
+                text=-1+init.profBonus
+                if text > -1:
+                    self.dexSave.setText(f'+{text}')
+                else:
+                    self.dexSave.setText(f'{text}')
             if self.acroPro.isChecked() == True:
                 text=-1+init.profBonus
                 if text > -1:
@@ -1109,6 +1196,10 @@ class Ui_charaSheet(object):
             init.dexMod = -1
         elif init.dex > 9 and init.dex < 12:
             self.dexR.setText('+0')
+            self.dexSave.setText('+0')
+            if init.dexProf == True:
+                text=0+init.profBonus
+                self.dexSave.setText(f'+{text}')
             if self.acroPro.isChecked() == True:
                 text=0+init.profBonus
                 self.acroR.setText(f'+{text}')
@@ -1127,6 +1218,10 @@ class Ui_charaSheet(object):
             init.dexMod = 0
         elif init.dex > 11 and init.dex < 14:
             self.dexR.setText('+1')
+            self.dexSave.setText('+1')
+            if init.dexProf == True:
+                text=1+init.profBonus
+                self.dexSave.setText(f'+{text}')
             if self.acroPro.isChecked() == True:
                 text=1+init.profBonus
                 self.acroR.setText(f'+{text}')
@@ -1145,6 +1240,10 @@ class Ui_charaSheet(object):
             init.dexMod = 1
         elif init.dex > 13 and init.dex < 16:
             self.dexR.setText('+2')
+            self.dexSave.setText('+2')
+            if init.dexProf == True:
+                text=2+init.profBonus
+                self.dexSave.setText(f'+{text}')
             if self.acroPro.isChecked() == True:
                 text=2+init.profBonus
                 self.acroR.setText(f'+{text}')
@@ -1163,6 +1262,10 @@ class Ui_charaSheet(object):
             init.dexMod = 2
         elif init.dex > 15 and init.dex < 18:
             self.dexR.setText('+3')
+            self.dexSave.setText('+3')
+            if init.dexProf == True:
+                text=3+init.profBonus
+                self.dexSave.setText(f'+{text}')
             if self.acroPro.isChecked() == True:
                 text=3+init.profBonus
                 self.acroR.setText(f'+{text}')
@@ -1181,6 +1284,10 @@ class Ui_charaSheet(object):
             init.dexMod = 3
         elif init.dex > 17 and init.dex < 20:
             self.dexR.setText('+4')
+            self.dexSave.setText('+4')
+            if init.dexProf == True:
+                text=4+init.profBonus
+                self.dexSave.setText(f'+{text}')
             if self.acroPro.isChecked() == True:
                 text=4+init.profBonus
                 self.acroR.setText(f'+{text}')
@@ -1199,6 +1306,10 @@ class Ui_charaSheet(object):
             init.dexMod = 4
         elif init.dex == 20:
             self.dexR.setText('+5')
+            self.dexSave.setText('+5')
+            if init.dexProf == True:
+                text=5+init.profBonus
+                self.dexSave.setText(f'+{text}')
             if self.acroPro.isChecked() == True:
                 text=5+init.profBonus
                 self.acroR.setText(f'+{text}')
@@ -1217,39 +1328,105 @@ class Ui_charaSheet(object):
             init.dexMod = 5
         if init.con == 1:
             self.conR.setText('-5')
+            self.conSave.setText('-5')
+            if init.conProf == True:
+                text=-5+init.profBonus
+                if text > -1:
+                    self.conSave.setText(f'+{text}')
+                else:
+                    self.conSave.setText(f'{text}')
             init.conMod = -5
         elif init.con >1 and init.con < 4:
             self.conR.setText('-4')
+            self.conSave.setText('-4')
+            if init.conProf == True:
+                text=-4+init.profBonus
+                if text > -1:
+                    self.conSave.setText(f'+{text}')
+                else:
+                    self.conSave.setText(f'{text}')
             init.conMod = -4
         elif init.con > 3 and init.dex < 6:
             self.conR.setText('-3')
+            self.conSave.setText('-3')
+            if init.conProf == True:
+                text=-3+init.profBonus
+                if text > -1:
+                    self.conSave.setText(f'+{text}')
+                else:
+                    self.conSave.setText(f'{text}')
             init.conMod = -3
         elif init.con > 5 and init.con < 8:
             self.conR.setText('-2')
+            self.conSave.setText('-2')
+            if init.conProf == True:
+                text=-2+init.profBonus
+                if text > -1:
+                    self.conSave.setText(f'+{text}')
+                else:
+                    self.conSave.setText(f'{text}')
             init.conMod = -2
         elif init.con > 7 and init.con < 10:
             self.conR.setText('-1')
+            self.conSave.setText('-1')
+            if init.conProf == True:
+                text=-1+init.profBonus
+                if text > -1:
+                    self.conSave.setText(f'+{text}')
+                else:
+                    self.conSave.setText(f'{text}')
             init.conMod = -1
         elif init.con > 9 and init.con < 12:
             self.conR.setText('+0')
+            self.conSave.setText('+0')
+            if init.conProf == True:
+                text=0+init.profBonus
+                self.conSave.setText(f'+{text}')
             init.conMod = 0
         elif init.con > 11 and init.con < 14:
             self.conR.setText('+1')
+            self.conSave.setText('+1')
+            if init.conProf == True:
+                text=1+init.profBonus
+                self.conSave.setText(f'+{text}')
             init.conMod = 1
         elif init.con > 13 and init.con < 16:
             self.conR.setText('+2')
+            self.conSave.setText('+2')
+            if init.conProf == True:
+                text=2+init.profBonus
+                self.conSave.setText(f'+{text}')
             init.conMod = 2
         elif init.con > 15 and init.con < 18:
             self.conR.setText('+3')
+            self.conSave.setText('+3')
+            if init.conProf == True:
+                text=3+init.profBonus
+                self.conSave.setText(f'+{text}')
             init.conMod = 3
         elif init.con > 17 and init.con < 20:
             self.conR.setText('+4')
+            self.conSave.setText('+4')
+            if init.conProf == True:
+                text=4+init.profBonus
+                self.conSave.setText(f'+{text}')
             init.conMod = 4
         elif init.con == 20:
             self.conR.setText('+5')
+            self.conSave.setText('+5')
+            if init.conProf == True:
+                text=5+init.profBonus
+                self.conSave.setText(f'+{text}')
             init.conMod = 5
         if init.intel == 1:
             self.intR.setText('-5')
+            self.intSave.setText('-5')
+            if init.intProf == True:
+                text=-5+init.profBonus
+                if text > -1:
+                    self.intSave.setText(f'+{text}')
+                else:
+                    self.intSave.setText(f'{text}')
             if self.arcaPro.isChecked() == True:
                 text=-5+init.profBonus
                 if text > -1:
@@ -1293,6 +1470,13 @@ class Ui_charaSheet(object):
             init.intMod = -5
         elif init.intel >1 and init.intel < 4:
             self.intR.setText('-4')
+            self.intSave.setText('-4')
+            if init.intProf == True:
+                text=-4+init.profBonus
+                if text > -1:
+                    self.intSave.setText(f'+{text}')
+                else:
+                    self.intSave.setText(f'{text}')
             if self.arcaPro.isChecked() == True:
                 text=-4+init.profBonus
                 if text > -1:
@@ -1336,6 +1520,13 @@ class Ui_charaSheet(object):
             init.intMod = -4
         elif init.intel > 3 and init.intel < 6:
             self.intR.setText('-3')
+            self.intSave.setText('-3')
+            if init.intProf == True:
+                text=-3+init.profBonus
+                if text > -1:
+                    self.intSave.setText(f'+{text}')
+                else:
+                    self.intSave.setText(f'{text}')
             if self.arcaPro.isChecked() == True:
                 text=-3+init.profBonus
                 if text > -1:
@@ -1379,6 +1570,13 @@ class Ui_charaSheet(object):
             init.intMod = -3
         elif init.intel > 5 and init.intel < 8:
             self.intR.setText('-2')
+            self.intSave.setText('-2')
+            if init.intProf == True:
+                text=-2+init.profBonus
+                if text > -1:
+                    self.intSave.setText(f'+{text}')
+                else:
+                    self.intSave.setText(f'{text}')
             if self.arcaPro.isChecked() == True:
                 text=-2+init.profBonus
                 if text > -1:
@@ -1422,6 +1620,13 @@ class Ui_charaSheet(object):
             init.intMod = -2
         elif init.intel > 7 and init.intel < 10:
             self.intR.setText('-1')
+            self.intSave.setText('-1')
+            if init.intProf == True:
+                text=-1+init.profBonus
+                if text > -1:
+                    self.intSave.setText(f'+{text}')
+                else:
+                    self.intSave.setText(f'{text}')
             if self.arcaPro.isChecked() == True:
                 text=-1+init.profBonus
                 if text > -1:
@@ -1465,6 +1670,10 @@ class Ui_charaSheet(object):
             init.intMod = -1
         elif init.intel > 9 and init.intel < 12:
             self.intR.setText('+0')
+            self.intSave.setText('+0')
+            if init.intProf == True:
+                text=0+init.profBonus
+                self.intSave.setText(f'+{text}')
             if self.arcaPro.isChecked() == True:
                 text=0+init.profBonus
                 self.arcaR.setText(f'+{text}')
@@ -1493,6 +1702,10 @@ class Ui_charaSheet(object):
             init.intMod = 0
         elif init.intel > 11 and init.intel < 13:
             self.intR.setText('+1')
+            self.intSave.setText('+1')
+            if init.intProf == True:
+                text=1+init.profBonus
+                self.intSave.setText(f'+{text}')
             if self.arcaPro.isChecked() == True:
                 text=1+init.profBonus
                 self.arcaR.setText(f'+{text}')
@@ -1521,6 +1734,10 @@ class Ui_charaSheet(object):
             init.intMod = 1
         elif init.intel > 13 and init.intel < 16:
             self.intR.setText('+2')
+            self.intSave.setText('+2')
+            if init.intProf == True:
+                text=2+init.profBonus
+                self.intSave.setText(f'+{text}')
             if self.arcaPro.isChecked() == True:
                 text=2+init.profBonus
                 self.arcaR.setText(f'+{text}')
@@ -1549,6 +1766,10 @@ class Ui_charaSheet(object):
             init.intMod = 2
         elif init.intel > 15 and init.intel < 18:
             self.intR.setText('+3')
+            self.intSave.setText('+3')
+            if init.intProf == True:
+                text=3+init.profBonus
+                self.intSave.setText(f'+{text}')
             if self.arcaPro.isChecked() == True:
                 text=3+init.profBonus
                 self.arcaR.setText(f'+{text}')
@@ -1577,6 +1798,10 @@ class Ui_charaSheet(object):
             init.intMod = 3
         elif init.intel > 17 and init.intel < 20:
             self.intR.setText('+4')
+            self.intSave.setText('+4')
+            if init.intProf == True:
+                text=4+init.profBonus
+                self.intSave.setText(f'+{text}')
             if self.arcaPro.isChecked() == True:
                 text=4+init.profBonus
                 self.arcaR.setText(f'+{text}')
@@ -1605,6 +1830,10 @@ class Ui_charaSheet(object):
             init.intMod = 4
         elif init.intel == 20:
             self.intR.setText('+5')
+            self.intSave.setText('+5')
+            if init.intProf == True:
+                text=5+init.profBonus
+                self.intSave.setText(f'+{text}')
             if self.arcaPro.isChecked() == True:
                 text=5+init.profBonus
                 self.arcaR.setText(f'+{text}')
@@ -1633,6 +1862,13 @@ class Ui_charaSheet(object):
             init.intMod = 5
         if init.wis == 1:
             self.wisR.setText('-5')
+            self.wisSave.setText('-5')
+            if init.wisProf == True:
+                text=-5+init.profBonus
+                if text > -1:
+                    self.wisSave.setText(f'+{text}')
+                else:
+                    self.wisSave.setText(f'{text}')
             if self.animPro.isChecked() == True:
                 text=-5+init.profBonus
                 if text > -1:
@@ -1676,6 +1912,13 @@ class Ui_charaSheet(object):
             init.wisMod = -5
         elif init.wis >1 and init.wis < 4:
             self.wisR.setText('-4')
+            self.wisSave.setText('-4')
+            if init.wisProf == True:
+                text=-4+init.profBonus
+                if text > -1:
+                    self.wisSave.setText(f'+{text}')
+                else:
+                    self.wisSave.setText(f'{text}')
             if self.animPro.isChecked() == True:
                 text=-4+init.profBonus
                 if text > -1:
@@ -1719,6 +1962,13 @@ class Ui_charaSheet(object):
             init.wisMod = -4
         elif init.wis > 3 and init.dex < 6:
             self.wisR.setText('-3')
+            self.wisSave.setText('-3')
+            if init.wisProf == True:
+                text=-3+init.profBonus
+                if text > -1:
+                    self.wisSave.setText(f'+{text}')
+                else:
+                    self.wisSave.setText(f'{text}')
             if self.animPro.isChecked() == True:
                 text=-3+init.profBonus
                 if text > -1:
@@ -1762,6 +2012,13 @@ class Ui_charaSheet(object):
             init.wisMod = -3
         elif init.wis > 5 and init.wis < 8:
             self.wisR.setText('-2')
+            self.wisSave.setText('-2')
+            if init.wisProf == True:
+                text=-2+init.profBonus
+                if text > -1:
+                    self.wisSave.setText(f'+{text}')
+                else:
+                    self.wisSave.setText(f'{text}')
             if self.animPro.isChecked() == True:
                 text=-2+init.profBonus
                 if text > -1:
@@ -1805,6 +2062,13 @@ class Ui_charaSheet(object):
             init.wisMod = -2
         elif init.wis > 7 and init.wis < 10:
             self.wisR.setText('-1')
+            self.wisSave.setText('-1')
+            if init.wisProf == True:
+                text=-1+init.profBonus
+                if text > -1:
+                    self.wisSave.setText(f'+{text}')
+                else:
+                    self.wisSave.setText(f'{text}')
             if self.animPro.isChecked() == True:
                 text=-1+init.profBonus
                 if text > -1:
@@ -1848,6 +2112,10 @@ class Ui_charaSheet(object):
             init.wisMod = -1
         elif init.wis > 9 and init.wis < 12:
             self.wisR.setText('+0')
+            self.wisSave.setText('+0')
+            if init.wisProf == True:
+                text=0+init.profBonus
+                self.wisSave.setText(f'+{text}')
             if self.animPro.isChecked() == True:
                 text=0+init.profBonus
                 self.animR.setText(f'+{text}')
@@ -1876,6 +2144,10 @@ class Ui_charaSheet(object):
             init.wisMod = 0
         elif init.wis > 11 and init.wis < 14:
             self.wisR.setText('+1')
+            self.wisSave.setText('+1')
+            if init.wisProf == True:
+                text=1+init.profBonus
+                self.wisSave.setText(f'+{text}')
             if self.animPro.isChecked() == True:
                 text=1+init.profBonus
                 self.animR.setText(f'+{text}')
@@ -1904,6 +2176,10 @@ class Ui_charaSheet(object):
             init.wisMod = 1
         elif init.wis > 13 and init.wis < 16:
             self.wisR.setText('+2')
+            self.wisSave.setText('+2')
+            if init.wisProf == True:
+                text=2+init.profBonus
+                self.wisSave.setText(f'+{text}')
             if self.animPro.isChecked() == True:
                 text=2+init.profBonus
                 self.animR.setText(f'+{text}')
@@ -1932,6 +2208,10 @@ class Ui_charaSheet(object):
             init.wisMod = 2
         elif init.wis > 15 and init.wis < 18:
             self.wisR.setText('+3')
+            self.wisSave.setText('+3')
+            if init.wisProf == True:
+                text=3+init.profBonus
+                self.wisSave.setText(f'+{text}')
             if self.animPro.isChecked() == True:
                 text=3+init.profBonus
                 self.animR.setText(f'+{text}')
@@ -1960,6 +2240,10 @@ class Ui_charaSheet(object):
             init.wisMod = 3
         elif init.wis > 17 and init.wis < 20:
             self.wisR.setText('+4')
+            self.wisSave.setText('+4')
+            if init.wisProf == True:
+                text=4+init.profBonus
+                self.wisSave.setText(f'+{text}')
             if self.animPro.isChecked() == True:
                 text=4+init.profBonus
                 self.animR.setText(f'+{text}')
@@ -1988,6 +2272,10 @@ class Ui_charaSheet(object):
             init.wisMod = 4
         elif init.wis == 20:
             self.wisR.setText('+5')
+            self.wisSave.setText('+5')
+            if init.wisProf == True:
+                text=5+init.profBonus
+                self.wisSave.setText(f'+{text}')
             if self.animPro.isChecked() == True:
                 text=5+init.profBonus
                 self.animR.setText(f'+{text}')
@@ -2016,6 +2304,13 @@ class Ui_charaSheet(object):
             init.wisMod = 5
         if init.cha == 1:
             self.chaR.setText('-5')
+            self.chaSave.setText('-5')
+            if init.chaProf == True:
+                text=-5+init.profBonus
+                if text > -1:
+                    self.chaSave.setText(f'+{text}')
+                else:
+                    self.chaSave.setText(f'{text}')
             if self.decePro.isChecked() == True:
                 text=-5+init.profBonus
                 if text > -1:
@@ -2051,6 +2346,13 @@ class Ui_charaSheet(object):
             init.chaMod = -5
         elif init.cha >1 and init.cha < 4:
             self.chaR.setText('-4')
+            self.chaSave.setText('-4')
+            if init.chaProf == True:
+                text=-4+init.profBonus
+                if text > -1:
+                    self.chaSave.setText(f'+{text}')
+                else:
+                    self.chaSave.setText(f'{text}')
             if self.decePro.isChecked() == True:
                 text=-4+init.profBonus
                 if text > -1:
@@ -2086,6 +2388,13 @@ class Ui_charaSheet(object):
             init.chaMod = -4
         elif init.cha > 3 and init.cha < 6:
             self.chaR.setText('-3')
+            self.chaSave.setText('-3')
+            if init.chaProf == True:
+                text=-3+init.profBonus
+                if text > -1:
+                    self.chaSave.setText(f'+{text}')
+                else:
+                    self.chaSave.setText(f'{text}')
             if self.decePro.isChecked() == True:
                 text=-3+init.profBonus
                 if text > -1:
@@ -2121,6 +2430,13 @@ class Ui_charaSheet(object):
             init.chaMod = -3
         elif init.cha > 5 and init.cha < 8:
             self.chaR.setText('-2')
+            self.chaSave.setText('-2')
+            if init.chaProf == True:
+                text=-2+init.profBonus
+                if text > -1:
+                    self.chaSave.setText(f'+{text}')
+                else:
+                    self.chaSave.setText(f'{text}')
             if self.decePro.isChecked() == True:
                 text=-2+init.profBonus
                 if text > -1:
@@ -2156,6 +2472,10 @@ class Ui_charaSheet(object):
             init.chaMod = -2
         elif init.cha > 7 and init.cha < 10:
             self.chaR.setText('-1')
+            self.chaSave.setText('-1')
+            if init.chaProf == True:
+                text=-1+init.profBonus
+                self.chaSave.setText(f'+{text}')
             if self.decePro.isChecked() == True:
                 text=-1+init.profBonus
                 if text > -1:
@@ -2191,6 +2511,10 @@ class Ui_charaSheet(object):
             init.chaMod = -1
         elif init.cha > 9 and init.cha < 12:
             self.chaR.setText('+0')
+            self.chaSave.setText('+0')
+            if init.chaProf == True:
+                text=0+init.profBonus
+                self.chaSave.setText(f'+{text}')
             if self.decePro.isChecked() == True:
                 text=0+init.profBonus
                 self.deceR.setText(f'+{text}')
@@ -2214,6 +2538,10 @@ class Ui_charaSheet(object):
             init.chaMod = 0
         elif init.cha > 11 and init.cha < 14:
             self.chaR.setText('+1')
+            self.chaSave.setText('+1')
+            if init.chaProf == True:
+                text=1+init.profBonus
+                self.chaSave.setText(f'+{text}')
             if self.decePro.isChecked() == True:
                 text=1+init.profBonus
                 self.deceR.setText(f'+{text}')
@@ -2237,6 +2565,10 @@ class Ui_charaSheet(object):
             init.chaMod = 1
         elif init.cha > 13 and init.cha < 16:
             self.chaR.setText('+2')
+            self.chaSave.setText('+2')
+            if init.chaProf == True:
+                text=2+init.profBonus
+                self.chaSave.setText(f'+{text}')
             if self.decePro.isChecked() == True:
                 text=2+init.profBonus
                 self.deceR.setText(f'+{text}')
@@ -2260,6 +2592,10 @@ class Ui_charaSheet(object):
             init.chaMod = 2
         elif init.cha > 15 and init.cha < 18:
             self.chaR.setText('+3')
+            self.chaSave.setText('+3')
+            if init.chaProf == True:
+                text=3+init.profBonus
+                self.chaSave.setText(f'+{text}')
             if self.decePro.isChecked() == True:
                 text=3+init.profBonus
                 self.deceR.setText(f'+{text}')
@@ -2283,6 +2619,10 @@ class Ui_charaSheet(object):
             init.chaMod = 3
         elif init.cha > 17 and init.cha < 20:
             self.chaR.setText('+4')
+            self.chaSave.setText('+4')
+            if init.chaProf == True:
+                text=4+init.profBonus
+                self.chaSave.setText(f'+{text}')
             if self.decePro.isChecked() == True:
                 text=4+init.profBonus
                 self.deceR.setText(f'+{text}')
@@ -2306,6 +2646,10 @@ class Ui_charaSheet(object):
             init.chaMod = 4
         elif init.cha == 20:
             self.chaR.setText('+5')
+            self.chaSave.setText('+5')
+            if init.chaProf == True:
+                text=5+init.profBonus
+                self.chaSave.setText(f'+{text}')
             if self.decePro.isChecked() == True:
                 text=5+init.profBonus
                 self.deceR.setText(f'+{text}')
@@ -2327,6 +2671,111 @@ class Ui_charaSheet(object):
             elif self.persPro.isChecked() == False:
                 self.persR.setText('+5')
             init.chaMod = 5
+    
+    def strSaveR(self):
+        if init.strProf == True:
+            init.roll=random.randint(1,20)
+            init.roll=init.roll+init.strMod+init.profBonus
+            self.rollLog.append(f'STR Save: {init.roll}')
+            if init.roll > 9:
+                self.rollLog.append('Pass')
+            elif init.roll < 10:
+                self.rollLog.append('Fail')
+        elif init.strProf == False:
+            init.roll=random.randint(1,20)
+            init.roll=init.roll+init.strMod
+            self.rollLog.append(f'STR Save: {init.roll}')
+            if init.roll > 9:
+                self.rollLog.append('Pass')
+            elif init.roll < 10:
+                self.rollLog.append('Fail')
+
+    def dexSaveR(self):
+        if init.dexProf == True:
+            init.roll=random.randint(1,20)
+            init.roll=init.roll+init.dexMod+init.profBonus
+            self.rollLog.append(f'DEX Save: {init.roll}')
+            if init.roll > 9:
+                self.rollLog.append('Pass')
+            elif init.roll < 10:
+                self.rollLog.append('Fail')
+        elif init.dexProf == False:
+            init.roll=random.randint(1,20)
+            init.roll=init.roll+init.dexMod
+            self.rollLog.append(f'DEX Save: {init.roll}')
+            if init.roll > 9:
+                self.rollLog.append('Pass')
+            elif init.roll < 10:
+                self.rollLog.append('Fail')
+    def conSaveR(self):
+        if init.conProf == True:
+            init.roll=random.randint(1,20)
+            init.roll=init.roll+init.conMod+init.profBonus
+            self.rollLog.append(f'CON Save: {init.roll}')
+            if init.roll > 9:
+                self.rollLog.append('Pass')
+            elif init.roll < 10:
+                self.rollLog.append('Fail')
+        elif init.conProf == False:
+            init.roll=random.randint(1,20)
+            init.roll=init.roll+init.conMod
+            self.rollLog.append(f'CON Save: {init.roll}')
+            if init.roll > 9:
+                self.rollLog.append('Pass')
+            elif init.roll < 10:
+                self.rollLog.append('Fail')
+    
+    def intSaveR(self):
+        if init.intProf == True:
+            init.roll=random.randint(1,20)
+            init.roll=init.roll+init.intMod+init.profBonus
+            self.rollLog.append(f'INT Save: {init.roll}')
+            if init.roll > 9:
+                self.rollLog.append('Pass')
+            elif init.roll < 10:
+                self.rollLog.append('Fail')
+        elif init.strProf == False:
+            init.roll=random.randint(1,20)
+            init.roll=init.roll+init.intMod
+            self.rollLog.append(f'INT Save: {init.roll}')
+            if init.roll > 9:
+                self.rollLog.append('Pass')
+            elif init.roll < 10:
+                self.rollLog.append('Fail')
+    def wisSaveR(self):
+        if init.wisProf == True:
+            init.roll=random.randint(1,20)
+            init.roll=init.roll+init.wisMod+init.profBonus
+            self.rollLog.append(f'WIS Save: {init.roll}')
+            if init.roll > 9:
+                self.rollLog.append('Pass')
+            elif init.roll < 10:
+                self.rollLog.append('Fail')
+        elif init.wisProf == False:
+            init.roll=random.randint(1,20)
+            init.roll=init.roll+init.wisMod
+            self.rollLog.append(f'WIS Save: {init.roll}')
+            if init.roll > 9:
+                self.rollLog.append('Pass')
+            elif init.roll < 10:
+                self.rollLog.append('Fail')
+    def chaSaveR(self):
+        if init.strProf == True:
+            init.roll=random.randint(1,20)
+            init.roll=init.roll+init.chaMod+init.profBonus
+            self.rollLog.append(f'CHA Save: {init.roll}')
+            if init.roll > 9:
+                self.rollLog.append('Pass')
+            elif init.roll < 10:
+                self.rollLog.append('Fail')
+        elif init.chaProf == False:
+            init.roll=random.randint(1,20)
+            init.roll=init.roll+init.chaMod
+            self.rollLog.append(f'CHA Save: {init.roll}')
+            if init.roll > 9:
+                self.rollLog.append('Pass')
+            elif init.roll < 10:
+                self.rollLog.append('Fail')
 
     def rollFunc(self):
         if self.rollModi.text() == 'Modifier':
