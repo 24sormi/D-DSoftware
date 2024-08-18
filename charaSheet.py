@@ -3066,7 +3066,7 @@ class Ui_charaSheet(object):
                 self.rollLog.append('Fail')
 
     def rollFunc(self):
-        if self.rollModi.text() == 'Modifier':
+        if self.rollModi.text() == 'Modifier' or self.rollModi.text() == ' ' or self.rollModi.text() == '':
             rollModi = 0
         else:
             rollModi = int(self.rollModi.text())
