@@ -664,8 +664,8 @@ class Ui_charaSheet(object):
         self.classSelect.setItemText(12, _translate("charaSheet", "Wizard"))
         self.classSelect.setItemText(13, _translate("charaSheet", "Artificer"))
         self.classSelect.setItemText(14, _translate("charaSheet", "Blood Hunter"))
-        self.characterName.setText(_translate("charaSheet", "Enter Character Name"))
-        self.groupBox.setTitle(_translate("charaSheet", " "))
+        self.characterName.setText(_translate("charaSheet", f"{init.charaName}"))
+        self.groupBox.setTitle(_translate("charaSheet", ""))
         self.doNothing.setText(_translate("charaSheet", "👤"))
         self.toInfo.setText(_translate("charaSheet", "ⓘ"))
         self.toNotes.setText(_translate("charaSheet", "📖"))
@@ -682,12 +682,12 @@ class Ui_charaSheet(object):
         self.setInp.setText(_translate("charaSheet", "Set Input"))
         self.rollModi.setText(_translate("charaSheet", "Modifier"))
         self.levelOutput.setText(_translate("charaSheet", "1"))
-        self.strInp.setText(_translate("charaSheet", "10"))
-        self.dexInp.setText(_translate("charaSheet", "10"))
-        self.conInp.setText(_translate("charaSheet", "10"))
-        self.intInp.setText(_translate("charaSheet", "10"))
-        self.chaInp.setText(_translate("charaSheet", "10"))
-        self.wisInp.setText(_translate("charaSheet", "10"))
+        self.strInp.setText(_translate("charaSheet", f"{init.inputStr}"))
+        self.dexInp.setText(_translate("charaSheet", f"{init.inputDex}"))
+        self.conInp.setText(_translate("charaSheet", f"{init.inputCon}"))
+        self.intInp.setText(_translate("charaSheet", f"{init.inputInt}"))
+        self.chaInp.setText(_translate("charaSheet", f"{init.inputCha}"))
+        self.wisInp.setText(_translate("charaSheet", f"{init.inputWis}"))
         self.lineEdit_9.setText(_translate("charaSheet", "Base Scores(0-20) :"))
         self.lineEdit_10.setText(_translate("charaSheet", "STR"))
         self.lineEdit_11.setText(_translate("charaSheet", "DEX"))
@@ -758,16 +758,75 @@ class Ui_charaSheet(object):
         self.steaR.setText(_translate("charaSheet", "+0"))
         self.survR.setText(_translate("charaSheet", "+0"))
         self.label_33.setText(_translate("charaSheet", "HP"))
-        self.hpBox.setText(_translate("charaSheet", "0/0"))
+        self.hpBox.setText(_translate("charaSheet", f"{init.num2}/{init.hp}"))
         self.submitHp.setText(_translate("charaSheet", "Submit HP"))
         self.label_34.setText(_translate("charaSheet", "Temp HP:"))
         self.raceInfo.setText(_translate("charaSheet", " "))
 
+    def loadData(self):
+        if init.race == 'SELECT RACE':
+            self.raceSelect.setCurrentIndex(0)
+        if init.race == 'Dragonborn':
+            self.raceSelect.setCurrentIndex(1)
+        if init.race == 'Dwarf':
+            self.raceSelect.setCurrentIndex(2)    
+        if init.race == 'Elf':
+            self.raceSelect.setCurrentIndex(3)
+        if init.race == 'Gnome':
+            self.raceSelect.setCurrentIndex(4)
+        if init.race == 'Halfling':
+            self.raceSelect.setCurrentIndex(5)
+        if init.race == 'Half-Elf':
+            self.raceSelect.setCurrentIndex(6)
+        if init.race == 'Half-Orc':
+            self.raceSelect.setCurrentIndex(7)
+        if init.race == 'Human':
+            self.raceSelect.setCurrentIndex(8)
+        if init.race == 'Tiefling':
+            self.raceSelect.setCurrentIndex(9)
+        if init.dndClass == 'SELECT CLASS':
+            self.classSelect.setCurrentIndex(0)
+        if init.dndClass == 'Barbarian':
+            self.classSelect.setCurrentIndex(1)
+        if init.dndClass == 'Bard':
+            self.classSelect.setCurrentIndex(2)
+        if init.dndClass == 'Cleric':
+            self.classSelect.setCurrentIndex(3)
+        if init.dndClass == 'Druid':
+            self.classSelect.setCurrentIndex(4)
+        if init.dndClass == 'Fighter':
+            self.classSelect.setCurrentIndex(5)
+        if init.dndClass == 'Monk':
+            self.classSelect.setCurrentIndex(6)
+        if init.dndClass == 'Paladin':
+            self.classSelect.setCurrentIndex(7)
+        if init.dndClass == 'Ranger':
+            self.classSelect.setCurrentIndex(8)
+        if init.dndClass == 'Rogue':
+            self.classSelect.setCurrentIndex(9)
+        if init.dndClass == 'Sorcerer':
+            self.classSelect.setCurrentIndex(10)
+        if init.dndClass == 'Warlock':
+            self.classSelect.setCurrentIndex(11)
+        if init.dndClass == 'Wizard':
+            self.classSelect.setCurrentIndex(12)
+        if init.dndClass == 'Artificer':
+            self.classSelect.setCurrentIndex(13)
+        if init.dndClass == 'Blood Hunter':
+            self.classSelect.setCurrentIndex(14)
+        self.setInput()
+        self.backgroundLoad()
+    
+    def backgroundLoad(self):
+        pass
+
     def raceSelection(self):
         if self.raceSelect.currentText() == 'SELECT RACE':
+            init.race='SELECT RACE'
             self.setToDefaultRace()
             self.setInput()
         if self.raceSelect.currentText() == 'Dragonborn':
+            init.race='Dragonborn'
             self.setToDefaultRace()
             init.raceStrMod=2
             init.raceChaMod=2
@@ -775,30 +834,35 @@ class Ui_charaSheet(object):
             self.subracesCombobox()
             self.setInput()
         if self.raceSelect.currentText() == 'Dwarf':
+            #init.race='Dwarf'
             self.setToDefaultRace()
             init.raceConMod=2
             init.walkSpeed=25
             self.subracesCombobox()
             self.setInput()
         if self.raceSelect.currentText() == 'Elf':
+            init.race='Elf'
             self.setToDefaultRace()
             init.raceDexMod=2
             init.walkSpeed=30
             self.subracesCombobox()
             self.setInput()
         if self.raceSelect.currentText() == 'Gnome':
+            init.race='Gnome'
             self.setToDefaultRace()
             init.raceIntMod=2
             init.walkSpeed=25
             self.subracesCombobox()
             self.setInput()
         if self.raceSelect.currentText() == 'Halfling':
+            init.race='Halfling'
             self.setToDefaultRace()
             init.raceDexMod=2
             init.walkSpeed=25
             self.subracesCombobox()
             self.setInput()
         if self.raceSelect.currentText() == 'Half-Elf':
+            init.race='Half-Elf'
             self.setToDefaultRace()
             init.raceChaMod=2
             init.walkSpeed=25
@@ -806,6 +870,7 @@ class Ui_charaSheet(object):
             self.subracesCombobox()
             self.setInput()
         if self.raceSelect.currentText() == 'Half-Orc':
+            init.race='Half-Orc'
             self.setToDefaultRace()
             init.raceStrMod=2
             init.raceConMod=1
@@ -813,6 +878,7 @@ class Ui_charaSheet(object):
             self.subracesCombobox()
             self.setInput()
         if self.raceSelect.currentText() == 'Human':
+            init.race='Human'
             self.setToDefaultRace()
             init.raceStrMod=1
             init.raceDexMod=1
@@ -824,6 +890,7 @@ class Ui_charaSheet(object):
             self.subracesCombobox()
             self.setInput()
         if self.raceSelect.currentText() == 'Tiefling':
+            init.race='Tiefling'
             self.setToDefaultRace()
             init.raceChaMod=2
             init.raceIntMod=1

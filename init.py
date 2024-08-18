@@ -1,4 +1,6 @@
 import math
+race='SELECT RACE'
+dndClass='SELECT CLASS'
 raceStrMod=0
 raceDexMod=0
 raceConMod=0
@@ -92,3 +94,5 @@ wisProf=False
 chaProf=False
 num1=0
 num2=0
+charaNotes=''
+gameNotes=''
