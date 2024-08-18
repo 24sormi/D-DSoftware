@@ -788,7 +788,7 @@ class Ui_charaSheet(object):
             self.setInput()
         if self.raceSelect.currentText() == 'Gnome':
             self.setToDefaultRace()
-            init.raceIntMod
+            init.raceIntMod=2
             init.walkSpeed=25
             self.subracesCombobox()
             self.setInput()
