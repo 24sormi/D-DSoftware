@@ -249,6 +249,10 @@ class Ui_charaSheet(object):
         font.setPointSize(18)
         self.wisR.setFont(font)
         self.wisR.setObjectName("wisR")
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.raceInfo = QtWidgets.QLabel(self.centralwidget)
+        self.raceInfo.setGeometry(QtCore.QRect(590,100,150,51))
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(100, 70, 51, 31))
         font = QtGui.QFont()
@@ -563,7 +567,7 @@ class Ui_charaSheet(object):
         self.lineEdit_17.setGeometry(QtCore.QRect(680, 10, 50, 20))
         self.lineEdit_17.setInputMethodHints(QtCore.Qt.ImhPreferNumbers)
         self.lineEdit_17.setObjectName("lineEdit_17")
-        self.submitHp = QtWidgets.QPushButton(self.centralwidget)
+        self.submitHp = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.modifyHp())
         self.submitHp.setGeometry(QtCore.QRect(740, 10, 85, 23))
         self.submitHp.setObjectName("submitHp")
         self.label_34 = QtWidgets.QLabel(self.centralwidget)
@@ -584,6 +588,9 @@ class Ui_charaSheet(object):
         self.statusbar = QtWidgets.QStatusBar(charaSheet)
         self.statusbar.setObjectName("statusbar")
         charaSheet.setStatusBar(self.statusbar)
+
+        self.raceSelect.activated.connect(self.raceSelection)
+        self.classSelect.activated.connect(self.classSelection)
 
         self.retranslateUi(charaSheet)
         QtCore.QMetaObject.connectSlotsByName(charaSheet)
@@ -754,38 +761,316 @@ class Ui_charaSheet(object):
         self.hpBox.setText(_translate("charaSheet", "0/0"))
         self.submitHp.setText(_translate("charaSheet", "Submit HP"))
         self.label_34.setText(_translate("charaSheet", "Temp HP:"))
+        self.raceInfo.setText(_translate("charaSheet", " "))
 
     def raceSelection(self):
-        if {self.raceSelect.currentText()} == '--SELECT RACE--':
-            #base stats
-            pass
-        elif {self.raceSelect.currentText()} == 'Dragonborn':
-            #dragonborn stats
-            pass
-        elif {self.raceSelect.currentText()} == 'Dwarf':
-            #dwarf stats
-            pass
-        elif {self.raceSelect.currentText()} == 'Elf':
-            #elf stats
-            pass
-        elif {self.raceSelect.currentText()} == 'Gnome':
-            #gnome stats
-            pass
-        elif {self.raceSelect.currentText()} == 'Halfling':
-            #halfling stats
-            pass
-        elif {self.raceSelect.currentText()} == 'Half-Elf':
-            #half elf stats
-            pass
-        elif {self.raceSelect.currentText()} == 'Half-Orc':
-            #half orc stats
-            pass
-        elif {self.raceSelect.currentText()} == 'Human':
-            #human stats
-            pass
-        elif {self.raceSelect.currentText()} == 'Tiefling':
-            #Tiefling stats
-            pass
+        if self.raceSelect.currentText() == 'SELECT RACE':
+            self.setToDefaultRace()
+            self.setInput()
+        if self.raceSelect.currentText() == 'Dragonborn':
+            self.setToDefaultRace()
+            init.raceStrMod=2
+            init.raceChaMod=2
+            init.walkSpeed=30
+            self.subracesCombobox()
+            self.setInput()
+        if self.raceSelect.currentText() == 'Dwarf':
+            self.setToDefaultRace()
+            init.raceConMod=2
+            init.walkSpeed=25
+            self.subracesCombobox()
+            self.setInput()
+        if self.raceSelect.currentText() == 'Elf':
+            self.setToDefaultRace()
+            init.raceDexMod=2
+            init.walkSpeed=30
+            self.subracesCombobox()
+            self.setInput()
+        if self.raceSelect.currentText() == 'Gnome':
+            self.setToDefaultRace()
+            init.raceIntMod
+            init.walkSpeed=25
+            self.subracesCombobox()
+            self.setInput()
+        if self.raceSelect.currentText() == 'Halfling':
+            self.setToDefaultRace()
+            init.raceDexMod=2
+            init.walkSpeed=25
+            self.subracesCombobox()
+            self.setInput()
+        if self.raceSelect.currentText() == 'Half-Elf':
+            self.setToDefaultRace()
+            init.raceChaMod=2
+            init.walkSpeed=25
+            self.raceInfo.setText("+1 in any ability")
+            self.subracesCombobox()
+            self.setInput()
+        if self.raceSelect.currentText() == 'Half-Orc':
+            self.setToDefaultRace()
+            init.raceStrMod=2
+            init.raceConMod=1
+            init.walkSpeed=30
+            self.subracesCombobox()
+            self.setInput()
+        if self.raceSelect.currentText() == 'Human':
+            self.setToDefaultRace()
+            init.raceStrMod=1
+            init.raceDexMod=1
+            init.raceConMod=1
+            init.raceIntMod=1
+            init.raceWisMod=1
+            init.raceChaMod=1
+            init.walkSpeed=30
+            self.subracesCombobox()
+            self.setInput()
+        if self.raceSelect.currentText() == 'Tiefling':
+            self.setToDefaultRace()
+            init.raceChaMod=2
+            init.raceIntMod=1
+            init.walkSpeed=30
+            self.subracesCombobox()
+            self.setInput()
+        self.classSelection()
+    
+    def classSelection(self):
+        if self.classSelect.currentText() == 'SELECT CLASS':
+            self.setToDefaultClass()
+            self.setInput()
+            init.hp=0
+        if self.classSelect.currentText() == 'Barbarian':
+            self.setToDefaultClass()
+            init.strProf=True
+            init.conProf=True
+            init.hitDice='1d12 x lvl'
+            self.setInput()
+            init.conMod=math.floor((init.con-10)/2)
+            if self.levelOutput.text()==1:
+                init.hp=12+init.conMod
+            else:
+                init.hp=init.conMod+(12*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Bard':
+            self.setToDefaultClass()
+            init.chaProf=True
+            init.dexProf=True
+            init.hitDice='1d8 x lvl'
+            self.setInput()
+            init.conMod=math.floor((init.con-10)/2)
+            if self.levelOutput.text()==1:
+                init.hp=8+init.conMod
+            else:
+                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Cleric':
+            self.setToDefaultClass()
+            init.chaProf=True
+            init.wisProf=True
+            init.hitDice='1d8 x lvl'
+            self.setInput()
+            init.conMod=math.floor((init.con-10)/2)
+            if self.levelOutput.text()==1:
+                init.hp=8+init.conMod
+            else:
+                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Druid':
+            self.setToDefaultClass()
+            init.intProf=True
+            init.wisProf=True
+            init.hitDice='1d8 x lvl'
+            self.setInput()
+            init.conMod=math.floor((init.con-10)/2)
+            if self.levelOutput.text()==1:
+                init.hp=8+init.conMod
+            else:
+                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Fighter':
+            self.setToDefaultClass()
+            init.strProf=True
+            init.conProf=True
+            init.hitDice='1d10 x lvl'
+            self.setInput()
+            init.conMod=math.floor((init.con-10)/2)
+            if self.levelOutput.text()==1:
+                init.hp=10+init.conMod
+            else:
+                init.hp=init.conMod+(10*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Monk':
+            self.setToDefaultClass()
+            if int(self.levelOutput.text())>13:
+                init.chaProf=True
+                init.strProf=True
+                init.dexProf=True
+                init.conProf=True
+                init.wisProf=True
+                init.intProf=True
+            else:
+                init.strProf=True
+                init.dexProf=True
+            init.hitDice='1d8 x lvl'
+            self.setInput()
+            init.conMod=math.floor((init.con-10)/2)
+            if self.levelOutput.text()==1:
+                init.hp=8+init.conMod
+            else:
+                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Paladin':
+            self.setToDefaultClass()
+            init.wisProf=True
+            init.chaProf=True
+            init.hitDice='1d10 x lvl'
+            self.setInput()
+            init.conMod=math.floor((init.con-10)/2)
+            if self.levelOutput.text()==1:
+                init.hp=10+init.conMod
+            else:
+                init.hp=init.conMod+(10*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Ranger':
+            self.setToDefaultClass()
+            init.wisProf=True
+            init.dexProf=True
+            init.hitDice='1d10 x lvl'
+            self.setInput()
+            init.conMod=math.floor((init.con-10)/2)
+            if self.levelOutput.text()==1:
+                init.hp=10+init.conMod
+            else:
+                init.hp=init.conMod+(10*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Rogue':
+            self.setToDefaultClass()
+            init.intProf=True
+            init.dexProf=True
+            init.hitDice='1d8 x lvl'
+            self.setInput()
+            init.conMod=math.floor((init.con-10)/2)
+            if self.levelOutput.text()==1:
+                init.hp=8+init.conMod
+            else:
+                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Sorcerer':
+            self.setToDefaultClass()
+            init.chaProf=True
+            init.conProf=True
+            init.hitDice='1d6 x lvl'
+            self.setInput()
+            init.conMod=math.floor((init.con-10)/2)
+            if self.levelOutput.text()==1:
+                init.hp=6+init.conMod
+            else:
+                init.hp=init.conMod+(6*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Warlock':
+            self.setToDefaultClass()
+            init.chaProf=True
+            init.wisProf=True
+            init.hitDice='1d8 x lvl'
+            self.setInput()
+            init.conMod=math.floor((init.con-10)/2)
+            if self.levelOutput.text()==1:
+                init.hp=8+init.conMod
+            else:
+                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Wizard':
+            self.setToDefaultClass()
+            init.intProf=True
+            init.wisProf=True
+            init.hitDice='1d6 x lvl'
+            self.setInput()
+            init.conMod=math.floor((init.con-10)/2)
+            if self.levelOutput.text()==1:
+                init.hp=6+init.conMod
+            else:
+                init.hp=init.conMod+(6*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Artificer':
+            self.setToDefaultClass()
+            init.intProf=True
+            init.conProf=True
+            init.hitDice='1d8 x lvl'
+            self.setInput()
+            init.conMod=math.floor((init.con-10)/2)
+            if self.levelOutput.text()==1:
+                init.hp=8+init.conMod
+            else:
+                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Blood Hunter':
+            self.setToDefaultClass()
+            init.intProf=True
+            init.dexProf=True
+            init.hitDice='1d10 x lvl'
+            self.setInput()
+            init.conMod=math.floor((init.con-10)/2)
+            if self.levelOutput.text()==1:
+                init.hp=10+init.conMod
+            else:
+                init.hp=init.conMod+(10*int(self.levelOutput.text()))
+        self.hpFunc()
+    
+    def hpFunc(self):
+        init.num2=init.hp
+        self.hpBox.setText(f'{init.hp}/{init.hp}')
+    
+    def modifyHp(self):
+        init.num1=int(self.lineEdit_17.text())
+        init.num2=init.num2+init.num1
+        self.hpBox.setText(f'{init.num2}/{init.hp}')
+    
+    def subracesCombobox(self):
+        pass
+
+    def setToDefaultRace(self):
+        self.raceInfo.setText(" ")
+        init.subrace='undefined'
+        init.lvl1 = 'false'
+        init.walkSpeed=30
+        init.raceChaMod=0
+        init.raceConMod=0
+        init.raceDexMod=0
+        init.raceIntMod=0
+        init.raceStrMod=0
+        init.raceWisMod=0
+    
+    def setToDefaultClass(self):
+        init.strProf=False
+        init.dexProf=False
+        init.conProf=False
+        init.intProf=False
+        init.wisProf=False
+        init.chaProf=False
+        init.hitDice='undefined'
+    
+    def setToDefaultBackground(self):
+        if self.acroPro.isChecked() == True:
+            self.acroPro.setChecked(False)
+        if self.animPro.isChecked() == True:
+            self.animPro.setChecked(False)
+        if self.arcaPro.isChecked() == True:
+            self.arcaPro.setChecked(False)
+        if self.athlPro.isChecked() == True:
+            self.athlPro.setChecked(False)
+        if self.decePro.isChecked() == True:
+            self.decePro.setChecked(False)
+        if self.histPro.isChecked() == True:
+            self.histPro.setChecked(False)
+        if self.insiPro.isChecked() == True:
+            self.insiPro.setChecked(False)
+        if self.intiPro.isChecked() == True:
+            self.intiPro.setChecked(False)
+        if self.invePro.isChecked() == True:
+            self.invePro.setChecked(False)
+        if self.mediPro.isChecked() == True:
+            self.mediPro.setChecked(False)
+        if self.natuPro.isChecked() == True:
+            self.natuPro.setChecked(False)
+        if self.percPro.isChecked() == True:
+            self.percPro.setChecked(False)
+        if self.perfPro.isChecked() == True:
+            self.perfPro.setChecked(False)
+        if self.persPro.isChecked() == True:
+            self.persPro.setChecked(False)
+        if self.reliPro.isChecked() == True:
+            self.reliPro.setChecked(False)
+        if self.sleiPro.isChecked() == True:
+            self.sleiPro.setChecked(False)
+        if self.steaPro.isChecked() == True:
+            self.steaPro.setChecked(False)
+        if self.survPro.isChecked() == True:
+            self.survPro.setChecked(False)
 
     def setInput(self):
         init.inputStr = int(self.strInp.text())
@@ -804,7 +1089,7 @@ class Ui_charaSheet(object):
         if init.inputDex > 20:
             init.inputDex = 20
             self.dexInp.setText('20')
-        if init.inputDex < 1:
+        elif init.inputDex < 1:
             init.inputDex = 1
             self.dexInp.setText('1')
         init.dex=init.inputDex+init.raceDexMod
@@ -2671,6 +2956,9 @@ class Ui_charaSheet(object):
             elif self.persPro.isChecked() == False:
                 self.persR.setText('+5')
             init.chaMod = 5
+        init.passivePerc = 10 + init.wisMod
+        init.passiveInve = 10 + init.intMod
+        init.passiveInsi = 10 + init.wisMod
     
     def strSaveR(self):
         if init.strProf == True:
