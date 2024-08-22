@@ -1,13 +1,13 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-#from infoSheet import Ui_infoSheet
-#from notes import Ui_notes
+from infoSheet import Ui_infoSheet
+from notes import Ui_notes
 #from saves import Ui_saves
 import init
 import math
 import random
 
 class Ui_charaSheet(object):
-    '''def infoSheet(self):
+    def infoSheet(self):
         self.window2 = QtWidgets.QMainWindow()
         self.ui = Ui_infoSheet()
         self.ui.setupUi(self.window2)
@@ -17,19 +17,19 @@ class Ui_charaSheet(object):
         self.ui = Ui_notes()
         self.ui.setupUi(self.window2)
         self.window2.show()
-    def saves(self):
+    '''def saves(self):
         self.window2 = QtWidgets.QMainWindow()
         self.ui = Ui_saves()
         self.ui.setupUi(self.window2)
-        self.window2.show()
+        self.window2.show()'''
     def charaSheet(self):
         self.window2 = QtWidgets.QMainWindow()
         self.ui = Ui_charaSheet()
         self.ui.setupUi(self.window2)
-        self.window2.show()'''
+        self.window2.show()
     def setupUi(self, charaSheet):
         charaSheet.setObjectName("charaSheet")
-        charaSheet.resize(861, 430)
+        charaSheet.resize(1020, 430)
         charaSheet.setInputMethodHints(QtCore.Qt.ImhPreferNumbers)
         self.centralwidget = QtWidgets.QWidget(charaSheet)
         self.centralwidget.setObjectName("centralwidget")
@@ -123,16 +123,18 @@ class Ui_charaSheet(object):
         font.setPointSize(20)
         self.toInfo.setFont(font)
         self.toInfo.setObjectName("toInfo")
-        #self.toInfo.clicked.connect(self.infoSheet)
-        #self.toInfo.clicked.connect(charaSheet.close)
+        self.toInfo.clicked.connect(self.infoSheet)
+        self.toInfo.clicked.connect(self.saveName)
+        self.toInfo.clicked.connect(charaSheet.close)
         self.toNotes = QtWidgets.QPushButton(self.groupBox)
         self.toNotes.setGeometry(QtCore.QRect(10, 190, 61, 61))
         font = QtGui.QFont()
         font.setPointSize(20)
         self.toNotes.setFont(font)
         self.toNotes.setObjectName("toNotes")
-        #self.toNotes.clicked.connect(self.notes)
-        #self.toNotes.clicked.connect(charaSheet.close)
+        self.toNotes.clicked.connect(self.notes)
+        self.toNotes.clicked.connect(self.saveName)
+        self.toNotes.clicked.connect(charaSheet.close)
         self.toSaves = QtWidgets.QPushButton(self.groupBox)
         self.toSaves.setGeometry(QtCore.QRect(10, 280, 61, 61))
         font = QtGui.QFont()
@@ -140,6 +142,7 @@ class Ui_charaSheet(object):
         self.toSaves.setFont(font)
         self.toSaves.setObjectName("toSaves")
         #self.toSaves.clicked.connect(self.saves)
+        #self.toSaves.clicked.connect(self.saveName)
         #self.toSaves.clicked.connect(charaSheet.close)
         self.rollLog = QtWidgets.QTextBrowser(self.centralwidget)
         self.rollLog.setGeometry(QtCore.QRect(870, 140, 130, 241))
@@ -591,8 +594,27 @@ class Ui_charaSheet(object):
 
         self.raceSelect.activated.connect(self.raceSelection)
         self.classSelect.activated.connect(self.classSelection)
+        self.acroPro.clicked.connect(self.saveAcro)
+        self.animPro.clicked.connect(self.saveAnim)
+        self.arcaPro.clicked.connect(self.saveArca)
+        self.athlPro.clicked.connect(self.saveAthl)
+        self.decePro.clicked.connect(self.saveDece)
+        self.histPro.clicked.connect(self.saveHist)
+        self.insiPro.clicked.connect(self.saveInsi)
+        self.intiPro.clicked.connect(self.saveInti)
+        self.invePro.clicked.connect(self.saveInve)
+        self.mediPro.clicked.connect(self.saveMedi)
+        self.natuPro.clicked.connect(self.saveNatu)
+        self.percPro.clicked.connect(self.savePerc)
+        self.perfPro.clicked.connect(self.savePerf)
+        self.persPro.clicked.connect(self.savePers)
+        self.reliPro.clicked.connect(self.saveReli)
+        self.sleiPro.clicked.connect(self.saveSlei)
+        self.steaPro.clicked.connect(self.saveStea)
+        self.survPro.clicked.connect(self.saveSurv)
 
         self.retranslateUi(charaSheet)
+        self.loadData()
         QtCore.QMetaObject.connectSlotsByName(charaSheet)
 
     def retranslateUi(self, charaSheet):
@@ -681,7 +703,7 @@ class Ui_charaSheet(object):
         self.rollButt.setText(_translate("charaSheet", "Roll"))
         self.setInp.setText(_translate("charaSheet", "Set Input"))
         self.rollModi.setText(_translate("charaSheet", "Modifier"))
-        self.levelOutput.setText(_translate("charaSheet", "1"))
+        self.levelOutput.setText(_translate("charaSheet", f"{init.lvl}"))
         self.strInp.setText(_translate("charaSheet", f"{init.inputStr}"))
         self.dexInp.setText(_translate("charaSheet", f"{init.inputDex}"))
         self.conInp.setText(_translate("charaSheet", f"{init.inputCon}"))
@@ -814,13 +836,52 @@ class Ui_charaSheet(object):
             self.classSelect.setCurrentIndex(13)
         if init.dndClass == 'Blood Hunter':
             self.classSelect.setCurrentIndex(14)
+        if init.acroClick == True or init.acro == True:
+            self.acroPro.setChecked(True)
+        if init.animClick == True or init.acro == True:
+            self.animPro.setChecked(True)
+        if init.arcaClick == True or init.arca == True:
+            self.arcaPro.setChecked(True)
+        if init.athlClick == True or init.athl == True:
+            self.athlPro.setChecked(True)
+        if init.deceClick == True or init.dece == True:
+            self.decePro.setChecked(True)
+        if init.histClick == True or init.hist == True:
+            self.histPro.setChecked(True)
+        if init.insiClick == True or init.insi == True:
+            self.insiPro.setChecked(True)
+        if init.intiClick == True or init.inti == True:
+            self.intiPro.setChecked(True)
+        if init.inveClick == True or init.inve == True:
+            self.invePro.setChecked(True)
+        if init.mediClick == True or init.medi == True:
+            self.mediPro.setChecked(True)
+        if init.natuClick == True or init.natu == True:
+            self.natuPro.setChecked(True)
+        if init.percClick == True or init.perc == True:
+            self.percPro.setChecked(True)
+        if init.perfClick == True or init.perf == True:
+            self.perfPro.setChecked(True)
+        if init.persClick == True or init.pers == True: 
+            self.persPro.setChecked(True)
+        if init.reliClick == True or init.reli == True:
+            self.reliPro.setChecked(True)
+        if init.sleiClick == True or init.slei == True:
+            self.sleiPro.setChecked(True)
+        if init.steaClick == True or init.stea == True:
+            self.steaPro.setChecked(True)
+        if init.survClick == True or init.surv == True:
+            self.survPro.setChecked(True)
+        self.strInp.setText(f'{init.inputStr}')
+        self.dexInp.setText(f'{init.inputDex}')
+        self.conInp.setText(f'{init.inputCon}')
+        self.intInp.setText(f'{init.inputInt}')
+        self.wisInp.setText(f'{init.inputWis}')
+        self.chaInp.setText(f'{init.inputCha}')
         self.setInput()
-        self.backgroundLoad()
-    
-    def backgroundLoad(self):
-        pass
 
     def raceSelection(self):
+        init.subrace='unselected'
         if self.raceSelect.currentText() == 'SELECT RACE':
             init.race='SELECT RACE'
             self.setToDefaultRace()
@@ -834,7 +895,7 @@ class Ui_charaSheet(object):
             self.subracesCombobox()
             self.setInput()
         if self.raceSelect.currentText() == 'Dwarf':
-            #init.race='Dwarf'
+            init.race='Dwarf'
             self.setToDefaultRace()
             init.raceConMod=2
             init.walkSpeed=25
@@ -901,10 +962,12 @@ class Ui_charaSheet(object):
     
     def classSelection(self):
         if self.classSelect.currentText() == 'SELECT CLASS':
+            init.dndClass='SELECT CLASS'
             self.setToDefaultClass()
             self.setInput()
             init.hp=0
         if self.classSelect.currentText() == 'Barbarian':
+            init.dndClass='Barbarian'
             self.setToDefaultClass()
             init.strProf=True
             init.conProf=True
@@ -916,6 +979,7 @@ class Ui_charaSheet(object):
             else:
                 init.hp=init.conMod+(12*int(self.levelOutput.text()))
         if self.classSelect.currentText() == 'Bard':
+            init.dndClass='Bard'
             self.setToDefaultClass()
             init.chaProf=True
             init.dexProf=True
@@ -927,6 +991,7 @@ class Ui_charaSheet(object):
             else:
                 init.hp=init.conMod+(8*int(self.levelOutput.text()))
         if self.classSelect.currentText() == 'Cleric':
+            init.dndClass='Cleric'
             self.setToDefaultClass()
             init.chaProf=True
             init.wisProf=True
@@ -938,6 +1003,7 @@ class Ui_charaSheet(object):
             else:
                 init.hp=init.conMod+(8*int(self.levelOutput.text()))
         if self.classSelect.currentText() == 'Druid':
+            init.dndClass='Druid'
             self.setToDefaultClass()
             init.intProf=True
             init.wisProf=True
@@ -949,6 +1015,7 @@ class Ui_charaSheet(object):
             else:
                 init.hp=init.conMod+(8*int(self.levelOutput.text()))
         if self.classSelect.currentText() == 'Fighter':
+            init.dndClass='Fighter'
             self.setToDefaultClass()
             init.strProf=True
             init.conProf=True
@@ -960,6 +1027,7 @@ class Ui_charaSheet(object):
             else:
                 init.hp=init.conMod+(10*int(self.levelOutput.text()))
         if self.classSelect.currentText() == 'Monk':
+            init.dndClass='Monk'
             self.setToDefaultClass()
             if int(self.levelOutput.text())>13:
                 init.chaProf=True
@@ -979,6 +1047,7 @@ class Ui_charaSheet(object):
             else:
                 init.hp=init.conMod+(8*int(self.levelOutput.text()))
         if self.classSelect.currentText() == 'Paladin':
+            init.dndClass='Paladin'
             self.setToDefaultClass()
             init.wisProf=True
             init.chaProf=True
@@ -990,6 +1059,7 @@ class Ui_charaSheet(object):
             else:
                 init.hp=init.conMod+(10*int(self.levelOutput.text()))
         if self.classSelect.currentText() == 'Ranger':
+            init.dndClass='Ranger'
             self.setToDefaultClass()
             init.wisProf=True
             init.dexProf=True
@@ -1001,6 +1071,7 @@ class Ui_charaSheet(object):
             else:
                 init.hp=init.conMod+(10*int(self.levelOutput.text()))
         if self.classSelect.currentText() == 'Rogue':
+            init.dndClass='Rogue'
             self.setToDefaultClass()
             init.intProf=True
             init.dexProf=True
@@ -1012,6 +1083,7 @@ class Ui_charaSheet(object):
             else:
                 init.hp=init.conMod+(8*int(self.levelOutput.text()))
         if self.classSelect.currentText() == 'Sorcerer':
+            init.dndClass='Sorcerer'
             self.setToDefaultClass()
             init.chaProf=True
             init.conProf=True
@@ -1023,6 +1095,7 @@ class Ui_charaSheet(object):
             else:
                 init.hp=init.conMod+(6*int(self.levelOutput.text()))
         if self.classSelect.currentText() == 'Warlock':
+            init.dndClass='Warlock'
             self.setToDefaultClass()
             init.chaProf=True
             init.wisProf=True
@@ -1034,6 +1107,7 @@ class Ui_charaSheet(object):
             else:
                 init.hp=init.conMod+(8*int(self.levelOutput.text()))
         if self.classSelect.currentText() == 'Wizard':
+            init.dndClass='Wizard'
             self.setToDefaultClass()
             init.intProf=True
             init.wisProf=True
@@ -1045,6 +1119,7 @@ class Ui_charaSheet(object):
             else:
                 init.hp=init.conMod+(6*int(self.levelOutput.text()))
         if self.classSelect.currentText() == 'Artificer':
+            init.dndClass='Artificer'
             self.setToDefaultClass()
             init.intProf=True
             init.conProf=True
@@ -1056,6 +1131,7 @@ class Ui_charaSheet(object):
             else:
                 init.hp=init.conMod+(8*int(self.levelOutput.text()))
         if self.classSelect.currentText() == 'Blood Hunter':
+            init.dndClass='Blood Hunter'
             self.setToDefaultClass()
             init.intProf=True
             init.dexProf=True
@@ -1068,9 +1144,101 @@ class Ui_charaSheet(object):
                 init.hp=init.conMod+(10*int(self.levelOutput.text()))
         self.hpFunc()
     
+    def saveName(self):
+        init.charaName=self.characterName.text()
+
     def hpFunc(self):
         init.num2=init.hp
         self.hpBox.setText(f'{init.hp}/{init.hp}')
+    
+    def hpRedo(self):
+        if self.classSelect.currentText() == 'SELECT CLASS':
+            init.hp=0
+        if self.classSelect.currentText() == 'Barbarian':
+            init.hitDice='1d12 x lvl'
+            if self.levelOutput.text()==1:
+                init.hp=12+init.conMod
+            else:
+                init.hp=init.conMod+(12*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Bard':
+            init.hitDice='1d8 x lvl'
+            if self.levelOutput.text()==1:
+                init.hp=8+init.conMod
+            else:
+                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Cleric':
+            init.hitDice='1d8 x lvl'
+            if self.levelOutput.text()==1:
+                init.hp=8+init.conMod
+            else:
+                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Druid':
+            init.hitDice='1d8 x lvl'
+            if self.levelOutput.text()==1:
+                init.hp=8+init.conMod
+            else:
+                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Fighter':
+            init.hitDice='1d10 x lvl'
+            if self.levelOutput.text()==1:
+                init.hp=10+init.conMod
+            else:
+                init.hp=init.conMod+(10*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Monk':
+            init.hitDice='1d8 x lvl'
+            if self.levelOutput.text()==1:
+                init.hp=8+init.conMod
+            else:
+                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Paladin':
+            init.hitDice='1d10 x lvl'
+            if self.levelOutput.text()==1:
+                init.hp=10+init.conMod
+            else:
+                init.hp=init.conMod+(10*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Ranger':
+            init.hitDice='1d10 x lvl'
+            if self.levelOutput.text()==1:
+                init.hp=10+init.conMod
+            else:
+                init.hp=init.conMod+(10*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Rogue':
+            init.hitDice='1d8 x lvl'
+            if self.levelOutput.text()==1:
+                init.hp=8+init.conMod
+            else:
+                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Sorcerer':
+            init.hitDice='1d6 x lvl'
+            if self.levelOutput.text()==1:
+                init.hp=6+init.conMod
+            else:
+                init.hp=init.conMod+(6*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Warlock':
+            init.hitDice='1d8 x lvl'
+            if self.levelOutput.text()==1:
+                init.hp=8+init.conMod
+            else:
+                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Wizard':
+            init.hitDice='1d6 x lvl'
+            if self.levelOutput.text()==1:
+                init.hp=6+init.conMod
+            else:
+                init.hp=init.conMod+(6*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Artificer':
+            init.hitDice='1d8 x lvl'
+            if self.levelOutput.text()==1:
+                init.hp=8+init.conMod
+            else:
+                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+        if self.classSelect.currentText() == 'Blood Hunter':
+            init.hitDice='1d10 x lvl'
+            if self.levelOutput.text()==1:
+                init.hp=10+init.conMod
+            else:
+                init.hp=init.conMod+(10*int(self.levelOutput.text()))
+        self.hpFunc()
     
     def modifyHp(self):
         init.num1=int(self.lineEdit_17.text())
@@ -3026,6 +3194,7 @@ class Ui_charaSheet(object):
         init.passivePerc = 10 + init.wisMod
         init.passiveInve = 10 + init.intMod
         init.passiveInsi = 10 + init.wisMod
+        self.hpRedo()
     
     def strSaveR(self):
         if init.strProf == True:
@@ -3396,7 +3565,114 @@ class Ui_charaSheet(object):
             init.roll=random.randint(1,20)
             init.roll=init.roll+init.dexMod
             self.rollLog.append(f'Surv: {init.roll}')
-
+    
+    def saveAcro(self):
+        if self.acroPro.isChecked() == True:
+            init.acroClick=True
+        else:
+            init.acroClick=False
+    
+    def saveAnim(self):
+        if self.animPro.isChecked() == True:
+            init.animClick=True
+        else:
+            init.animClick=False
+    
+    def saveArca(self):
+        if self.arcaPro.isChecked() == True:
+            init.arcaClick=True
+        else:
+            init.arcaClick=False
+    
+    def saveAthl(self):
+        if self.athlPro.isChecked() == True:
+            init.athlClick=True
+        else:
+            init.athlClick=False
+    
+    def saveDece(self):
+        if self.decePro.isChecked() == True:
+            init.deceClick=True
+        else:
+            init.deceClick=False
+    
+    def saveHist(self):
+        if self.histPro.isChecked() == True:
+            init.histClick=True
+        else:
+            init.histClick=False
+    
+    def saveInsi(self):
+        if self.insiPro.isChecked() == True:
+            init.insiClick=True
+        else:
+            init.insiClick=False
+    
+    def saveInti(self):
+        if self.intiPro.isChecked() == True:
+            init.intiClick=True
+        else:
+            init.intiClick=False
+    
+    def saveInve(self):
+        if self.invePro.isChecked() == True:
+            init.inveClick=True
+        else:
+            init.inveClick=False
+    
+    def saveMedi(self):
+        if self.mediPro.isChecked() == True:
+            init.mediClick=True
+        else:
+            init.mediClick=False
+    
+    def saveNatu(self):
+        if self.natuPro.isChecked() == True:
+            init.natuClick=True
+        else:
+            init.natuClick=False
+    
+    def savePerc(self):
+        if self.percPro.isChecked() == True:
+            init.percClick=True
+        else:
+            init.percClick=False
+    
+    def savePerf(self):
+        if self.perfPro.isChecked() == True:
+            init.perfClick=True
+        else:
+            init.perfClick=False
+    
+    def savePers(self):
+        if self.persPro.isChecked() == True:
+            init.persClick=True
+        else:
+            init.persClick=False
+    
+    def saveReli(self):
+        if self.reliPro.isChecked() == True:
+            init.reliClick=True
+        else:
+            init.reliClick=False
+    
+    def saveSlei(self):
+        if self.sleiPro.isChecked() == True:
+            init.sleiClick=True
+        else:
+            init.sleiClick=False
+    
+    def saveStea(self):
+        if self.steaPro.isChecked() == True:
+            init.steaClick=True
+        else:
+            init.steaClick=False
+    
+    def saveSurv(self):
+        if self.survPro.isChecked() == True:
+            init.survClick=True
+        else:
+            init.survClick=False
 
 if __name__ == "__main__":
     import sys
