@@ -879,6 +879,7 @@ class Ui_charaSheet(object):
         self.wisInp.setText(f'{init.inputWis}')
         self.chaInp.setText(f'{init.inputCha}')
         self.setInput()
+        self.hpRedo()
 
     def raceSelection(self):
         init.subrace='unselected'
@@ -1159,85 +1160,85 @@ class Ui_charaSheet(object):
             if self.levelOutput.text()==1:
                 init.hp=12+init.conMod
             else:
-                init.hp=init.conMod+(12*int(self.levelOutput.text()))
+                init.hp=init.conMod+12+(7*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Bard':
             init.hitDice='1d8 x lvl'
             if self.levelOutput.text()==1:
                 init.hp=8+init.conMod
             else:
-                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+                init.hp=init.conMod+8+(5*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Cleric':
             init.hitDice='1d8 x lvl'
             if self.levelOutput.text()==1:
                 init.hp=8+init.conMod
             else:
-                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+                init.hp=init.conMod+8+(5*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Druid':
             init.hitDice='1d8 x lvl'
             if self.levelOutput.text()==1:
                 init.hp=8+init.conMod
             else:
-                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+                init.hp=init.conMod+8+(5*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Fighter':
             init.hitDice='1d10 x lvl'
             if self.levelOutput.text()==1:
                 init.hp=10+init.conMod
             else:
-                init.hp=init.conMod+(10*int(self.levelOutput.text()))
+                init.hp=init.conMod+10+(6*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Monk':
             init.hitDice='1d8 x lvl'
             if self.levelOutput.text()==1:
                 init.hp=8+init.conMod
             else:
-                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+                init.hp=init.conMod+8+(5*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Paladin':
             init.hitDice='1d10 x lvl'
             if self.levelOutput.text()==1:
                 init.hp=10+init.conMod
             else:
-                init.hp=init.conMod+(10*int(self.levelOutput.text()))
+                init.hp=init.conMod+10+(6*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Ranger':
             init.hitDice='1d10 x lvl'
             if self.levelOutput.text()==1:
                 init.hp=10+init.conMod
             else:
-                init.hp=init.conMod+(10*int(self.levelOutput.text()))
+                init.hp=init.conMod+10+(6*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Rogue':
             init.hitDice='1d8 x lvl'
             if self.levelOutput.text()==1:
                 init.hp=8+init.conMod
             else:
-                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+                init.hp=init.conMod+8+(5*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Sorcerer':
             init.hitDice='1d6 x lvl'
             if self.levelOutput.text()==1:
                 init.hp=6+init.conMod
             else:
-                init.hp=init.conMod+(6*int(self.levelOutput.text()))
+                init.hp=init.conMod+6+(4*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Warlock':
             init.hitDice='1d8 x lvl'
             if self.levelOutput.text()==1:
                 init.hp=8+init.conMod
             else:
-                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+                init.hp=init.conMod+8+(5*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Wizard':
             init.hitDice='1d6 x lvl'
             if self.levelOutput.text()==1:
                 init.hp=6+init.conMod
             else:
-                init.hp=init.conMod+(6*int(self.levelOutput.text()))
+                init.hp=init.conMod+6+(4*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Artificer':
             init.hitDice='1d8 x lvl'
             if self.levelOutput.text()==1:
                 init.hp=8+init.conMod
             else:
-                init.hp=init.conMod+(8*int(self.levelOutput.text()))
+                init.hp=init.conMod+8+(5*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Blood Hunter':
             init.hitDice='1d10 x lvl'
             if self.levelOutput.text()==1:
                 init.hp=10+init.conMod
             else:
-                init.hp=init.conMod+(10*int(self.levelOutput.text()))
+                init.hp=init.conMod+10+(6*(int(self.levelOutput.text())-1))
         self.hpFunc()
     
     def modifyHp(self):

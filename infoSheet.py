@@ -293,10 +293,14 @@ class Ui_infoSheet(object):
         self.bgSetup()
     
     def bgSetup(self):
+        if self.bgSelect.currentText() == 'Select Background':
+            self.bgReset()
         if self.bgSelect.currentText() == 'Acolyte':
             self.bgReset()
             init.insi = True
             init.reli = True
+            init.bgLan = 'Pick any 2'
+            
     
     def bgReset(self):
         self.bgInfo.clear()
