@@ -109,7 +109,7 @@ class Ui_infoSheet(object):
         self.passiveWisInsi.setReadOnly(True)
         self.passiveWisInsi.setObjectName("passiveWisInsi")
         self.levelType = QtWidgets.QComboBox(self.centralwidget)
-        self.levelType.setGeometry(QtCore.QRect(340, 10, 160, 30))
+        self.levelType.setGeometry(QtCore.QRect(340, 10, 120, 30))
         self.levelType.setObjectName("levelType")
         self.levelType.addItem("")
         self.levelType.addItem("")
@@ -121,9 +121,9 @@ class Ui_infoSheet(object):
         self.submitLevel.setGeometry(QtCore.QRect(450, 50, 130, 30))
         self.submitLevel.setObjectName("submitLevel")
         self.xpTo = QtWidgets.QLabel(self.centralwidget)
-        self.xpTo.setGeometry(QtCore.QRect(510, 10, 50, 30))
+        self.xpTo.setGeometry(QtCore.QRect(470, 10, 200, 30))
         font = QtGui.QFont()
-        font.setPointSize(12)
+        font.setPointSize(9)
         self.xpTo.setFont(font)
         self.xpTo.setObjectName("xpTo")
         self.subraceSelect = QtWidgets.QComboBox(self.centralwidget)
@@ -237,6 +237,9 @@ class Ui_infoSheet(object):
 
         self.retranslateUi(infoSheet)
         self.start()
+        self.bgSelect.activated.connect(self.bgSetup)
+        self.submitLevel.clicked.connect(self.levelButt)
+        self.levelType.activated.connect(self.lvlTy)
         QtCore.QMetaObject.connectSlotsByName(infoSheet)
 
     def retranslateUi(self, infoSheet):
@@ -251,11 +254,11 @@ class Ui_infoSheet(object):
         self.label_3.setText(_translate("infoSheet", "INT(Investigation) :"))
         self.label_4.setText(_translate("infoSheet", "WIS(Insight) :"))
         self.label_5.setText(_translate("infoSheet", "Race Specific Senses :"))
-        self.levelType.setItemText(0, _translate("infoSheet", "Levelling Type"))
+        self.levelType.setItemText(0, _translate("infoSheet", "Lvl Type"))
         self.levelType.setItemText(1, _translate("infoSheet", "XP"))
         self.levelType.setItemText(2, _translate("infoSheet", "Milestone"))
         self.submitLevel.setText(_translate("infoSheet", "Submit Level"))
-        self.xpTo.setText(_translate("infoSheet", "0/0"))
+        self.xpTo.setText(_translate("infoSheet", ""))
         self.subraceSelect.setItemText(0, _translate("infoSheet", "Subrace N/A"))
         self.bgSelect.setItemText(0, _translate("infoSheet", "Select Background"))
         self.bgSelect.setItemText(1, _translate("infoSheet", "Acolyte"))
@@ -286,26 +289,223 @@ class Ui_infoSheet(object):
         self.passiveIntInve.setText(_translate("infoSheet", f"{init.passiveInve}"))
         self.passiveWisInsi.setText(_translate("infoSheet", f"{init.passiveInsi}"))
         self.passiveWisPerc.setText(_translate("infoSheet", f"{init.passivePerc}"))
+        self.hitDiceDisplay.setText(_translate("infoSheet", f"{init.hitDice}"))
+        self.profBonusDisplay.setText(_translate("infoSheet", f"+{init.profBonus}"))
     
     def start(self):
         if init.dexMod > -1:
             self.initiativeDisplay.setText(f"+{init.dexMod}")
+        if init.background == 'blank':
+            self.bgSelect.setCurrentIndex(0)
+        if init.background == 'acol':
+            self.bgSelect.setCurrentIndex(1)
+        if init.background == 'char':
+            self.bgSelect.setCurrentIndex(2)
+        if init.background == 'crim':
+            self.bgSelect.setCurrentIndex(3)
+        if init.background == 'ente':
+            self.bgSelect.setCurrentIndex(4)
+        if init.background == 'folk':
+            self.bgSelect.setCurrentIndex(5)
+        if init.background == 'guil':
+            self.bgSelect.setCurrentIndex(6)
+        if init.background == 'herm':
+            self.bgSelect.setCurrentIndex(7)
+        if init.background == 'nobl':
+            self.bgSelect.setCurrentIndex(8)
+        if init.background == 'outl':
+            self.bgSelect.setCurrentIndex(9)
+        if init.background == 'sage':
+            self.bgSelect.setCurrentIndex(10)
+        if init.background == 'sail':
+            self.bgSelect.setCurrentIndex(11)
+        if init.background == 'urch':
+            self.bgSelect.setCurrentIndex(12)
         self.bgSetup()
+        if init.lvlType == 'xp':
+            self.levelType.setCurrentIndex(1)
+        if init.lvlType == 'lvl':
+            self.levelType.setCurrentIndex(2)
+        self.lvlTy()
     
     def bgSetup(self):
         if self.bgSelect.currentText() == 'Select Background':
             self.bgReset()
+            init.background = 'blank'
+            init.bgLan = 'None'
+            init.bgToo = 'None'
         if self.bgSelect.currentText() == 'Acolyte':
             self.bgReset()
+            self.bgInfo.append("!!Regardless of your background, talk to your DM about your character and their background to make your character fit as well as possible in your campaign.!!")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric - performing sacred rites is not the same thing as channeling divine power. Choose a god, a pantheon of gods, or some other quasi-divine being, and work with your DM to detail the nature of your religious service. Were you a lesser functionary in a temple, raised from childhood to assist the priests in the sacred rites? Or were you a high priest who suddenly experienced a call to serve your god in a different way? Perhaps you were the leader of a small cult outside of any established temple structure, or even an occult group that served a fiendish master that you now deny.")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("Your Starting Equipment: A holy symbol(a gift to you when you entered priesthood), a prayer book or prayer wheel, 5 sticks of incense, vestments, a set of common clothes, and a pouch containing 15gp")
+            init.background = 'acol'
             init.insi = True
             init.reli = True
             init.bgLan = 'Pick any 2'
-            
+            init.bgToo = 'None'
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("!!Scroll to Top!!")
+        if self.bgSelect.currentText() == 'Charlatan':
+            self.bgReset()
+            self.bgInfo.append("!!Regardless of your background, talk to your DM about your character and their background to make your character fit as well as possible in your campaign.!!")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("You have always had a way with people. You know what makes them tick, you can tease out their hearts' desires after a few minutes of conversation, and with a few leading questions you can read them like they were children's books. It's a useful talent, and one that you're perfectly willing to use for your advantage. You know what people want and you deliver, or rather, you promise to deliver. Common sense should steer people away from things that sound too good to be true, but common sesne seems to be in short supply when you're around. The bottle of pink coloured liquid will surely cure that unseemly rash, this ointment - nothing more than a bit of fat with a sprinkle of silver dust, can restore youth and vigor, and there's a bridge in the city that just happens to be for sale. These marvels sound implausible, but you make them sound like the real deal. You may want to talk to the DM about making sure NPCs are fully fleshed as to ensure there are answers to the questions that may come up.")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("Your Starting Equipment: A set of fine clothes, a disguise kit, tools of the con of your choice(ten stoppered bottles filled with coloured liquid, a set of weighted dice, a deck of marked cards, or a signet ring of imaginary duke), and a pouch containing 15gp")
+            init.background = 'char'
+            init.dece = True
+            init.slei = True
+            init.bgLan = 'None'
+            init.bgToo = 'Disguise Kit, Forgery Kit'
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("!!Scroll to Top!!")
+        if self.bgSelect.currentText() == 'Criminal':
+            self.bgReset()
+            self.bgInfo.append("!!Regardless of your background, talk to your DM about your character and their background to make your character fit as well as possible in your campaign.!!")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("You are an experienced criminal with a history of breaking the law. You have spent a lot of time among other criminals and still have contacts within the criminal underworld. You're far closer that most people to the world of murder, theft, and violence that pervades the underbelly of civilisation, and you have survived up to this point by flouting the rules and regulations of society.")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("Your Starting Equipment: A crowbar, a set of dark common clothes including a hood, and a pouch containing 15gp")
+            init.background = 'crim'
+            init.dece = True
+            init.stea = True
+            init.bgLan = 'None'
+            init.bgToo = "Any Gaming Set(x1), Thieves' Tools"
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("!!Scroll to Top!!")
+        if self.bgSelect.currentText() == 'Entertainer':
+            self.bgReset()
+            self.bgInfo.append("!!Regardless of your background, talk to your DM about your character and their background to make your character fit as well as possible in your campaign.!!")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("You thrive in front of an audience. You know how to entrance them, entertain them, and even inspire them. Your poetics can stir the hearts of those who hear you, awakening grief or joy, laughter or anger. Your music raises their spirits or captures their sorrow. Your dance steps captivate, your humor cuts to the quick. Whatever techniques you use, your art is your life. You may want to speak with you DM on what specific type of entertainer you are(circus, musical, theater, ect.) for a more accurate depiction of your character in the campaign.")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("Your Starting Equipment: A musical instrument of your choice, the favour of an admirer(love letter, lock of hair, or trinket), a costume, and a pouch containing 15gp")
+            init.background = 'ente'
+            init.acro = True
+            init.perf = True
+            init.bgLan = 'None'
+            init.bgToo = 'Disguise Kit, Any Musical Instrument(x1)'
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("!!Scroll to Top!!")
+        if self.bgSelect.currentText() == 'Folk Hero':
+            self.bgReset()
+            self.bgInfo.append("!!Regardless of your background, talk to your DM about your character and their background to make your character fit as well as possible in your campaign.!!")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("You come from a humble social rank, but you are destined for so much more. Already the people of your home village regard you as their champion, and your destiny calls you to stand against the tyrants and monsters that threaten the common folk everywhere.")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("Your Starting Equipment: A set of artisan's tools of your choice, a shovel, an iron pot, a set of common clothes, and a pouch containing 10 gp")
+            init.background = 'folk'
+            init.anim = True
+            init.surv = True
+            init.bgLan = 'None'
+            init.bgToo = "Artisan's Tools, Any Land Vehicle(x1)"
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("!!Scroll to Top!!")
+        if self.bgSelect.currentText() == 'Guild Artisan':
+            self.bgReset()
+            self.bgInfo.append("!!Regardless of your background, talk to your DM about your character and their background to make your character fit as well as possible in your campaign.!!")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("You are a member of an artisan's guild, skilled in a particular field closely associated with other artisans. You are a well-established part of the mercantile world, freed by talent and wealth from the constraints of a feudal social order. You learned your skills as an apprentice to a master artisan, under the sponsorship of your guild, until you became a master in your own right.")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("Your Starting Equipment: A set of artisan's tools of your choice, a letter of introduction from your guild, a set of traveler's clothes, and a pouch containing 15gp")
+            init.background = 'guil'
+            init.insi = True
+            init.pers = True
+            init.bgLan = 'Pick any 1'
+            init.bgToo = "Artisan's Tools(x1)"
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("!!Scroll to Top!!")
+        if self.bgSelect.currentText() == 'Hermit':
+            self.bgReset()
+            self.bgInfo.append("!!Regardless of your background, talk to your DM about your character and their background to make your character fit as well as possible in your campaign.!!")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("You lived in selusion - either in a sheltered community such as a monastery, or entirely alone - for a formative part of your life. In your time apart from the clamor of society, you found quiet, solitude, and perhaps some of the answers you were looking for")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("Your Starting Equipment: A scroll case stuffed full of notes from your studies or prayers, a winter blanket, a set of common clothes, an herbalism kit, and 5gp")
+            init.background = 'herm'
+            init.medi = True
+            init.reli = True
+            init.bgLan = 'Pick any 1'
+            init.bgToo = 'Herbalism Kit'
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("!!Scroll to Top!!")
+        if self.bgSelect.currentText() == 'Noble':
+            self.bgReset()
+            self.bgInfo.append("!!Regardless of your background, talk to your DM about your character and their background to make your character fit as well as possible in your campaign.!!")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("You understand wealth, power, and privilege. You carry a noble title, and your family owns land, collects taxes, and wields significant political influence. You might be a pampered aristocrat unfamiliar with work or discomfort, a former merchant just elevated to the nobility, or a disinherited scoundrel with a disproportionate sense of entitlement. Or you could be an honest, hard-working landowner who cares deeply about the people who live and work on your land, keenly aware of your responsibility to them. Work with your DM to come up with an appropriate title and determine how much authority that title carries. A noble title doesn't stand on its own - it's connected to an entire family, and whatever title you hold, you will pass it down to your children. Not only do you need to determine your noble title, but you should also work with the DM to describe your family and their influence on you. Is your family old and established, or was your title only recently bestowed? How much influence do they wield, and over what area? What kind of reputation does your family have among the other aristocrats of the region? How do the common people regard them? What's your position in the family? Are you the heir to the head of the family? Have you already inherited the title? How do you feel about that responsibility? Or are you so far down the line of inheritance that no one cares what you do, as long as you don't embarrass the family? How does the head of your family feel about your adventuring career? Are you in your family's good graces, or shunned by the rest of your family? Does your family have a coat of arms? An insignia you might wear on a signet ring? Particular colours you wear all the time? An animal you regard as a symbol of your line or even a spiritual member of the family? These details help establish your family and your title as features of the world of the campaign.")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("Your Starting Equipment: A set of fine clothes, a signet ring, a scroll of pedigree, and a purse containing 25gp")
+            init.background = 'nobl'
+            init.hist = True
+            init.pers = True
+            init.bgLan = 'Pick any 1'
+            init.bgToo = 'Any Gaming Set(x1)'
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("!!Scroll to Top!!")
+        if self.bgSelect.currentText() == 'Outlander':
+            self.bgReset()
+            self.bgInfo.append("!!Regardless of your background, talk to your DM about your character and their background to make your character fit as well as possible in your campaign.!!")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("You grew up in the wilds, far from civilisation and the comforts of town and technology. You've witnessed the migration of herds larger than forests, survived weather more extreme than any city-dweller could comprehend, and enjoyed the solitude of being the only thinking creature for miles in any direction. The wilds are in your blood, whether you were a nomad, an explorer, a recluse, a hunter-gatherer, or even a marauder. Even in places where you don't know the specific features of the terrain, you know the ways of the wild.")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("Your Starting Equipment: A staff, a hunting trap, a trophy from an animal you killed, a set of traveler's clothes, and a pouch containing 10gp")
+            init.background = 'outl'
+            init.athl = True
+            init.surv = True
+            init.bgLan = 'Pick any 1'
+            init.bgToo = 'Any Musical Instrument(x1)'
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("!!Scroll to Top!!")
+        if self.bgSelect.currentText() == 'Sage':
+            self.bgReset()
+            self.bgInfo.append("!!Regardless of your background, talk to your DM about your character and their background to make your character fit as well as possible in your campaign.!!")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("You spent years learning the lore of the multiverse. You scoured manuscripts, studied scrolls, and listened to the greatest experts on the subjects that interest you. Your efforts have made you a master in your fields of study. You may roll a d8 or otherwise choose a specialty between Alchemist, Astronomer, Discredited Academic, Librarian, Professor, Researcher, Wizard's Apprentice, or Scribe.")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("Your Starting Equipment: A bottle of ink, a quill, a small knife, a letter from a dead colleague posing a question you have not yet been able to answer a set of common clothes, and a pouch of gold conatining 10gp")
+            init.background = 'sage'
+            init.arca = True
+            init.hist = True
+            init.bgLan = 'Pick any 2'
+            init.bgToo = 'None'
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("!!Scroll to Top!!")
+        if self.bgSelect.currentText() == 'Sailor':
+            self.bgReset()
+            self.bgInfo.append("!!Regardless of your background, talk to your DM about your character and their background to make your character fit as well as possible in your campaign.!!")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("You sailed on a seagoing vessel for years. In that time, you faced down mighty storms, monsters of the deep, and those who wanted to sink your craft to the bottomless depths. Your first love is the distant line of the horizon, but the time has come to try your hand at something new. Discuss the nature of the ship you previously sailed with your DM. Was it a merchant ship, a naval vessel, a ship of discovery, or a pirate ship? How famous(or infamous) is it? Is it widely traveled? Is it still sailing, or is it missing and presumed lost with all hands? What were your duties on board - boatswain, captain, navigator, cook, or some other position? Who were the captain and first mate? Did you leave your ship on good terms with your fellows, or on the run?")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("Your Starting Equipment: A belaying pin(improvised club), 50 feet of silk rope, a lucky charm such as a rabbit foot or small stone with a hole in the center(or you may roll for a random trinket on the Trinkets table), a set of common clothes, and a pouch containing 10 gp")
+            init.background = 'sail'
+            init.athl = True
+            init.perc = True
+            init.bgLan = 'None'
+            init.bgToo = "Navigator's Tools, Any Water Vehicle"
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("!!Scroll to Top!!")
+        if self.bgSelect.currentText() == 'Urchin':
+            self.bgReset()
+            self.bgInfo.append("!!Regardless of your background, talk to your DM about your character and their background to make your character fit as well as possible in your campaign.!!")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("You grew up on the streets alone, orphaned, and poor. You had no one to watch over you or to provide for you, so you learned to provide for yourself. You fought fiercely over food and kept a constant watch out for other desperate souls who might steal from you. You slept on rooftops and in alleyways, exposed to the elements, and endured sickness without the advantage of medicine or a place to recuperate. You've survived despite all odds, and did so through cunning, strength, speed, or some combination of each. You begin your adventuring career with enough money to live modestly but securely for at least ten days. How did you come by that money? What allowed you to break free of your desperate circumstances and embark on a better life?")
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("Your Starting Equipment: A small knife, a map of the city you grew up in, a pet mouse, a token to remember your parents by, a set of common clothes, and a pouch containing 10 gp")
+            init.background = 'urch'
+            init.slei = True
+            init.stea = True
+            init.bgLan = 'None'
+            init.bgToo = "Disguise Kit, Thieves' Tools"
+            self.bgInfo.append("-----------------------------------")
+            self.bgInfo.append("!!Scroll to Top!!")
+        self.fixHoles()
     
     def bgReset(self):
         self.bgInfo.clear()
-        self.armourProfs.clear()
-        self.weaponProfs.clear()
         self.languages.clear()
         self.toolProfs.clear()
         init.acro = False
@@ -329,9 +529,99 @@ class Ui_infoSheet(object):
         self.fixHoles()
     
     def fixHoles(self):
-        pass
+        self.languages.append(f"Background: {init.bgLan}")
+        self.toolProfs.append(f"Background: {init.bgToo}")
 
+    def lvlTy(self):
+        if self.levelType.currentText() == 'XP':
+            init.lvlType = 'xp'
+            self.levelSystem()
+        if self.levelType.currentText() == 'Milestone':
+            init.lvlType = 'lvl'
+            self.xpTo.setText('')
 
+    def levelSystem(self):
+        if self.levelType.currentText() == 'XP':
+            if init.xp < 0:
+                init.xp = 0
+                init.lvl = 1
+            if init.xp < 300:
+                init.lvl = 1
+                self.xpTo.setText(f'{init.xp}/300')
+            if init.xp > 299 and init.xp < 900:
+                init.lvl = 2
+                self.xpTo.setText(f'{init.xp}/900')
+            if init.xp > 899 and init.xp < 2700:
+                init.lvl = 3
+                self.xpTo.setText(f'{init.xp}/2700')
+            if init.xp > 2699 and init.xp < 6500:
+                init.lvl = 4
+                self.xpTo.setText(f'{init.xp}/6500')
+            if init.xp > 6499 and init.xp < 14000:
+                init.lvl = 5
+                self.xpTo.setText(f'{init.xp}/14000')
+            if init.xp > 13999 and init.xp < 23000:
+                init.lvl = 6
+                self.xpTo.setText(f'{init.xp}/23000')
+            if init.xp > 22999 and init.xp < 34000:
+                init.lvl = 7
+                self.xpTo.setText(f'{init.xp}/34000')
+            if init.xp > 33999 and init.xp < 48000:
+                init.lvl = 8
+                self.xpTo.setText(f'{init.xp}/48000')
+            if init.xp > 47999 and init.xp < 64000:
+                init.lvl = 9
+                self.xpTo.setText(f'{init.xp}/64000')
+            if init.xp > 63999 and init.xp < 85000:
+                init.lvl = 10
+                self.xpTo.setText(f'{init.xp}/85000')
+            if init.xp > 84999 and init.xp < 100000:
+                init.lvl = 11
+                self.xpTo.setText(f'{init.xp}/100000')
+            if init.xp > 99999 and init.xp < 120000:
+                init.lvl = 12
+                self.xpTo.setText(f'{init.xp}/120000')
+            if init.xp > 119999 and init.xp < 140000:
+                init.lvl = 13
+                self.xpTo.setText(f'{init.xp}/140000')
+            if init.xp > 139999 and init.xp < 165000:
+                init.lvl = 14
+                self.xpTo.setText(f'{init.xp}/165000')
+            if init.xp > 164999 and init.xp < 195000:
+                init.lvl = 15
+                self.xpTo.setText(f'{init.xp}/195000')
+            if init.xp > 194999 and init.xp < 225000:
+                init.lvl = 16
+                self.xpTo.setText(f'{init.xp}/225000')
+            if init.xp > 224999 and init.xp < 265000:
+                init.lvl = 17
+                self.xpTo.setText(f'{init.xp}/265000')
+            if init.xp > 264999 and init.xp < 305000:
+                init.lvl = 18
+                self.xpTo.setText(f'{init.xp}/305000')
+            if init.xp > 304999 and init.xp < 355000:
+                init.lvl = 19
+                self.xpTo.setText(f'{init.xp}/355000')
+            if init.xp > 354999:
+                init.lvl = 20
+                if init.xp > 355000:
+                    init.xp = 355000
+                self.xpTo.setText(f'355000/355000')
+        if self.levelType.currentText() == 'Milestone':
+            if init.lvl > 20:
+                init.lvl = 20
+            if init.lvl < 1:
+                init.lvl = 1
+    
+    def levelButt(self):
+        if self.levelType.currentText() == 'XP':
+            n = int(self.levelEnter.text())
+            init.xp = init.xp + n
+            self.levelSystem()
+        if self.levelType.currentText() == 'Milestone':
+            n = int(self.levelEnter.text())
+            init.lvl = init.lvl + n
+            self.levelSystem()
 
 if __name__ == "__main__":
     import sys
