@@ -612,6 +612,16 @@ class Ui_infoSheet(object):
                 init.lvl = 20
             if init.lvl < 1:
                 init.lvl = 1
+        if init.lvl > 0 and init.lvl < 5:
+            init.profBonus = +2
+        if init.lvl > 4 and init.lvl < 9:
+            init.profBonus = +3
+        if init.lvl > 8 and init.lvl < 13:
+            init.profBonus = +4
+        if init.lvl > 12 and init.lvl < 17:
+            init.profBonus = +5
+        if init.lvl > 16:
+            init.profBonus = +6
     
     def levelButt(self):
         if self.levelType.currentText() == 'XP':

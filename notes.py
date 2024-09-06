@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import init
 
 
 class Ui_notes(object):
@@ -36,7 +37,7 @@ class Ui_notes(object):
         self.window2.show()
     def setupUi(self, notes):
         notes.setObjectName("notes")
-        notes.resize(861, 431)
+        notes.resize(1180, 431)
         self.centralwidget = QtWidgets.QWidget(notes)
         self.centralwidget.setObjectName("centralwidget")
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
@@ -72,25 +73,25 @@ class Ui_notes(object):
         self.toSaves.setFont(font)
         self.toSaves.setObjectName("toSaves")
         self.plainTextEdit = QtWidgets.QPlainTextEdit(self.centralwidget)
-        self.plainTextEdit.setGeometry(QtCore.QRect(100, 40, 361, 341))
+        self.plainTextEdit.setGeometry(QtCore.QRect(100, 50, 500, 350))
         self.plainTextEdit.setObjectName("plainTextEdit")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(240, 10, 71, 16))
+        self.label.setGeometry(QtCore.QRect(280, 10, 200, 30))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.plainTextEdit_2 = QtWidgets.QPlainTextEdit(self.centralwidget)
-        self.plainTextEdit_2.setGeometry(QtCore.QRect(490, 40, 361, 341))
+        self.plainTextEdit_2.setGeometry(QtCore.QRect(650, 50, 500, 350))
         self.plainTextEdit_2.setObjectName("plainTextEdit_2")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(620, 10, 91, 16))
+        self.label_2.setGeometry(QtCore.QRect(820, 10, 200, 30))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(100, 10, 71, 20))
+        self.pushButton.setGeometry(QtCore.QRect(100, 10, 130, 30))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pushButton.setFont(font)
@@ -104,6 +105,8 @@ class Ui_notes(object):
         self.statusbar.setObjectName("statusbar")
         notes.setStatusBar(self.statusbar)
 
+        self.loadNotes()
+        self.pushButton.clicked.connect(self.saveNotes)
         self.retranslateUi(notes)
         QtCore.QMetaObject.connectSlotsByName(notes)
 
@@ -118,6 +121,14 @@ class Ui_notes(object):
         self.label_2.setText(_translate("notes", "Character Notes"))
         self.pushButton.setText(_translate("notes", "Save Notes"))
 
+    def saveNotes(self):
+        init.gameNotes = self.plainTextEdit.toPlainText()
+        init.charaNotes = self.plainTextEdit_2.toPlainText()
+        print(init.gameNotes, ' ', init.charaNotes)
+    
+    def loadNotes(self):
+        self.plainTextEdit.setPlainText(f'{init.gameNotes}')
+        self.plainTextEdit_2.setPlainText(f'{init.charaNotes}')
 
 if __name__ == "__main__":
     import sys
