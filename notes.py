@@ -124,7 +124,6 @@ class Ui_notes(object):
     def saveNotes(self):
         init.gameNotes = self.plainTextEdit.toPlainText()
         init.charaNotes = self.plainTextEdit_2.toPlainText()
-        print(init.gameNotes, ' ', init.charaNotes)
     
     def loadNotes(self):
         self.plainTextEdit.setPlainText(f'{init.gameNotes}')

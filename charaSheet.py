@@ -972,7 +972,7 @@ class Ui_charaSheet(object):
             self.setToDefaultClass()
             init.strProf=True
             init.conProf=True
-            init.hitDice='1d12 x lvl'
+            init.hitDice='d12'
             self.setInput()
             init.conMod=math.floor((init.con-10)/2)
             if self.levelOutput.text()==1:
@@ -984,7 +984,7 @@ class Ui_charaSheet(object):
             self.setToDefaultClass()
             init.chaProf=True
             init.dexProf=True
-            init.hitDice='1d8 x lvl'
+            init.hitDice='d8'
             self.setInput()
             init.conMod=math.floor((init.con-10)/2)
             if self.levelOutput.text()==1:
@@ -996,7 +996,7 @@ class Ui_charaSheet(object):
             self.setToDefaultClass()
             init.chaProf=True
             init.wisProf=True
-            init.hitDice='1d8 x lvl'
+            init.hitDice='d8'
             self.setInput()
             init.conMod=math.floor((init.con-10)/2)
             if self.levelOutput.text()==1:
@@ -1008,7 +1008,7 @@ class Ui_charaSheet(object):
             self.setToDefaultClass()
             init.intProf=True
             init.wisProf=True
-            init.hitDice='1d8 x lvl'
+            init.hitDice='d8'
             self.setInput()
             init.conMod=math.floor((init.con-10)/2)
             if self.levelOutput.text()==1:
@@ -1020,7 +1020,7 @@ class Ui_charaSheet(object):
             self.setToDefaultClass()
             init.strProf=True
             init.conProf=True
-            init.hitDice='1d10 x lvl'
+            init.hitDice='d10'
             self.setInput()
             init.conMod=math.floor((init.con-10)/2)
             if self.levelOutput.text()==1:
@@ -1040,7 +1040,7 @@ class Ui_charaSheet(object):
             else:
                 init.strProf=True
                 init.dexProf=True
-            init.hitDice='1d8 x lvl'
+            init.hitDice='d8'
             self.setInput()
             init.conMod=math.floor((init.con-10)/2)
             if self.levelOutput.text()==1:
@@ -1052,7 +1052,7 @@ class Ui_charaSheet(object):
             self.setToDefaultClass()
             init.wisProf=True
             init.chaProf=True
-            init.hitDice='1d10 x lvl'
+            init.hitDice='d10'
             self.setInput()
             init.conMod=math.floor((init.con-10)/2)
             if self.levelOutput.text()==1:
@@ -1064,7 +1064,7 @@ class Ui_charaSheet(object):
             self.setToDefaultClass()
             init.wisProf=True
             init.dexProf=True
-            init.hitDice='1d10 x lvl'
+            init.hitDice='d10'
             self.setInput()
             init.conMod=math.floor((init.con-10)/2)
             if self.levelOutput.text()==1:
@@ -1076,7 +1076,7 @@ class Ui_charaSheet(object):
             self.setToDefaultClass()
             init.intProf=True
             init.dexProf=True
-            init.hitDice='1d8 x lvl'
+            init.hitDice='d8'
             self.setInput()
             init.conMod=math.floor((init.con-10)/2)
             if self.levelOutput.text()==1:
@@ -1088,7 +1088,7 @@ class Ui_charaSheet(object):
             self.setToDefaultClass()
             init.chaProf=True
             init.conProf=True
-            init.hitDice='1d6 x lvl'
+            init.hitDice='d6'
             self.setInput()
             init.conMod=math.floor((init.con-10)/2)
             if self.levelOutput.text()==1:
@@ -1100,7 +1100,7 @@ class Ui_charaSheet(object):
             self.setToDefaultClass()
             init.chaProf=True
             init.wisProf=True
-            init.hitDice='1d8 x lvl'
+            init.hitDice='d8'
             self.setInput()
             init.conMod=math.floor((init.con-10)/2)
             if self.levelOutput.text()==1:
@@ -1112,7 +1112,7 @@ class Ui_charaSheet(object):
             self.setToDefaultClass()
             init.intProf=True
             init.wisProf=True
-            init.hitDice='1d6 x lvl'
+            init.hitDice='d6'
             self.setInput()
             init.conMod=math.floor((init.con-10)/2)
             if self.levelOutput.text()==1:
@@ -1124,7 +1124,7 @@ class Ui_charaSheet(object):
             self.setToDefaultClass()
             init.intProf=True
             init.conProf=True
-            init.hitDice='1d8 x lvl'
+            init.hitDice='d8'
             self.setInput()
             init.conMod=math.floor((init.con-10)/2)
             if self.levelOutput.text()==1:
@@ -1136,7 +1136,7 @@ class Ui_charaSheet(object):
             self.setToDefaultClass()
             init.intProf=True
             init.dexProf=True
-            init.hitDice='1d10 x lvl'
+            init.hitDice='d10'
             self.setInput()
             init.conMod=math.floor((init.con-10)/2)
             if self.levelOutput.text()==1:
@@ -1156,85 +1156,85 @@ class Ui_charaSheet(object):
         if self.classSelect.currentText() == 'SELECT CLASS':
             init.hp=0
         if self.classSelect.currentText() == 'Barbarian':
-            init.hitDice='1d12 x lvl'
+            init.hitDice='d12'
             if self.levelOutput.text()==1:
                 init.hp=12+init.conMod
             else:
                 init.hp=init.conMod+12+(7*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Bard':
-            init.hitDice='1d8 x lvl'
+            init.hitDice='d8'
             if self.levelOutput.text()==1:
                 init.hp=8+init.conMod
             else:
                 init.hp=init.conMod+8+(5*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Cleric':
-            init.hitDice='1d8 x lvl'
+            init.hitDice='d8'
             if self.levelOutput.text()==1:
                 init.hp=8+init.conMod
             else:
                 init.hp=init.conMod+8+(5*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Druid':
-            init.hitDice='1d8 x lvl'
+            init.hitDice='d8'
             if self.levelOutput.text()==1:
                 init.hp=8+init.conMod
             else:
                 init.hp=init.conMod+8+(5*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Fighter':
-            init.hitDice='1d10 x lvl'
+            init.hitDice='d10'
             if self.levelOutput.text()==1:
                 init.hp=10+init.conMod
             else:
                 init.hp=init.conMod+10+(6*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Monk':
-            init.hitDice='1d8 x lvl'
+            init.hitDice='d8'
             if self.levelOutput.text()==1:
                 init.hp=8+init.conMod
             else:
                 init.hp=init.conMod+8+(5*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Paladin':
-            init.hitDice='1d10 x lvl'
+            init.hitDice='d10'
             if self.levelOutput.text()==1:
                 init.hp=10+init.conMod
             else:
                 init.hp=init.conMod+10+(6*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Ranger':
-            init.hitDice='1d10 x lvl'
+            init.hitDice='d10'
             if self.levelOutput.text()==1:
                 init.hp=10+init.conMod
             else:
                 init.hp=init.conMod+10+(6*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Rogue':
-            init.hitDice='1d8 x lvl'
+            init.hitDice='d8'
             if self.levelOutput.text()==1:
                 init.hp=8+init.conMod
             else:
                 init.hp=init.conMod+8+(5*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Sorcerer':
-            init.hitDice='1d6 x lvl'
+            init.hitDice='d6'
             if self.levelOutput.text()==1:
                 init.hp=6+init.conMod
             else:
                 init.hp=init.conMod+6+(4*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Warlock':
-            init.hitDice='1d8 x lvl'
+            init.hitDice='d8'
             if self.levelOutput.text()==1:
                 init.hp=8+init.conMod
             else:
                 init.hp=init.conMod+8+(5*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Wizard':
-            init.hitDice='1d6 x lvl'
+            init.hitDice='d6'
             if self.levelOutput.text()==1:
                 init.hp=6+init.conMod
             else:
                 init.hp=init.conMod+6+(4*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Artificer':
-            init.hitDice='1d8 x lvl'
+            init.hitDice='d8'
             if self.levelOutput.text()==1:
                 init.hp=8+init.conMod
             else:
                 init.hp=init.conMod+8+(5*(int(self.levelOutput.text())-1))
         if self.classSelect.currentText() == 'Blood Hunter':
-            init.hitDice='1d10 x lvl'
+            init.hitDice=f'd10'
             if self.levelOutput.text()==1:
                 init.hp=10+init.conMod
             else:

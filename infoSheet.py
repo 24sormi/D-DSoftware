@@ -53,6 +53,7 @@ class Ui_infoSheet(object):
         font.setPointSize(20)
         self.toSheet.setFont(font)
         self.toSheet.setObjectName("toSheet")
+        self.toSheet.clicked.connect(self.saveProfs)
         self.toSheet.clicked.connect(self.charaSheet)
         self.toSheet.clicked.connect(infoSheet.close)
         self.doNothing2 = QtWidgets.QPushButton(self.groupBox)
@@ -61,12 +62,14 @@ class Ui_infoSheet(object):
         font.setPointSize(20)
         self.doNothing2.setFont(font)
         self.doNothing2.setObjectName("doNothing2")
+        self.doNothing2.clicked.connect(self.saveProfs)
         self.toNotes = QtWidgets.QPushButton(self.groupBox)
         self.toNotes.setGeometry(QtCore.QRect(10, 190, 61, 61))
         font = QtGui.QFont()
         font.setPointSize(20)
         self.toNotes.setFont(font)
         self.toNotes.setObjectName("toNotes")
+        self.toNotes.clicked.connect(self.saveProfs)
         self.toNotes.clicked.connect(self.notes)
         self.toNotes.clicked.connect(infoSheet.close)
         self.toSaves = QtWidgets.QPushButton(self.groupBox)
@@ -75,6 +78,7 @@ class Ui_infoSheet(object):
         font.setPointSize(20)
         self.toSaves.setFont(font)
         self.toSaves.setObjectName("toSaves")
+        self.toSaves.clicked.connect(self.saveProfs)
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(110, 10, 150, 20))
         font = QtGui.QFont()
@@ -214,6 +218,7 @@ class Ui_infoSheet(object):
         self.hitDiceDisplay = QtWidgets.QLineEdit(self.centralwidget)
         self.hitDiceDisplay.setGeometry(QtCore.QRect(780, 40, 90, 20))
         self.hitDiceDisplay.setObjectName("hitDiceDisplay")
+        self.hitDiceDisplay.setReadOnly(True)
         self.inpArmo = QtWidgets.QPlainTextEdit(self.centralwidget)
         self.inpArmo.setGeometry(QtCore.QRect(90, 310, 190, 64))
         self.inpArmo.setObjectName("inpArmo")
@@ -237,8 +242,10 @@ class Ui_infoSheet(object):
 
         self.retranslateUi(infoSheet)
         self.start()
+        self.loadProfs()
         self.bgSelect.activated.connect(self.bgSetup)
         self.submitLevel.clicked.connect(self.levelButt)
+        self.subraceSelect.activated.connect(self.subraceFunctions)
         self.levelType.activated.connect(self.lvlTy)
         QtCore.QMetaObject.connectSlotsByName(infoSheet)
 
@@ -289,7 +296,7 @@ class Ui_infoSheet(object):
         self.passiveIntInve.setText(_translate("infoSheet", f"{init.passiveInve}"))
         self.passiveWisInsi.setText(_translate("infoSheet", f"{init.passiveInsi}"))
         self.passiveWisPerc.setText(_translate("infoSheet", f"{init.passivePerc}"))
-        self.hitDiceDisplay.setText(_translate("infoSheet", f"{init.hitDice}"))
+        self.hitDiceDisplay.setText(_translate("infoSheet", f"{init.lvl}{init.hitDice}"))
         self.profBonusDisplay.setText(_translate("infoSheet", f"+{init.profBonus}"))
     
     def start(self):
@@ -327,6 +334,19 @@ class Ui_infoSheet(object):
         if init.lvlType == 'lvl':
             self.levelType.setCurrentIndex(2)
         self.lvlTy()
+        self.raceLoad()
+    
+    def saveProfs(self):
+        init.toolsProf = self.inpTool.toPlainText()
+        init.armourProf = self.inpArmo.toPlainText()
+        init.weaponProf = self.inpWeap.toPlainText()
+        init.languages = self.inpLang.toPlainText()
+    
+    def loadProfs(self):
+        self.inpTool.setPlainText(f'{init.toolsProf}')
+        self.inpArmo.setPlainText(f'{init.armourProf}')
+        self.inpWeap.setPlainText(f'{init.weaponProf}')
+        self.inpLang.setPlainText(f'{init.languages}')
     
     def bgSetup(self):
         if self.bgSelect.currentText() == 'Select Background':
@@ -533,12 +553,15 @@ class Ui_infoSheet(object):
         self.toolProfs.append(f"Background: {init.bgToo}")
 
     def lvlTy(self):
+        if self.levelType.currentText() == 'Lvl Type':
+            init.lvlType = 'none'
+            self.xpTo.setText('')
         if self.levelType.currentText() == 'XP':
             init.lvlType = 'xp'
             self.levelSystem()
         if self.levelType.currentText() == 'Milestone':
             init.lvlType = 'lvl'
-            self.xpTo.setText('')
+            self.xpTo.setText(f'{init.lvl}/20')
 
     def levelSystem(self):
         if self.levelType.currentText() == 'XP':
@@ -612,6 +635,8 @@ class Ui_infoSheet(object):
                 init.lvl = 20
             if init.lvl < 1:
                 init.lvl = 1
+            self.xpTo.setText(f'{init.lvl}/20')
+        self.hitDiceDisplay.setText(f"{init.lvl}{init.hitDice}")
         if init.lvl > 0 and init.lvl < 5:
             init.profBonus = +2
         if init.lvl > 4 and init.lvl < 9:
@@ -633,6 +658,200 @@ class Ui_infoSheet(object):
             init.lvl = init.lvl + n
             self.levelSystem()
 
+    def raceLoad(self):
+        if init.race == 'Dragonborn':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon, Damage Resistance')
+            self.subraceSelect.clear()
+            self.subraceSelect.addItem('Draconic Ancestry')
+            self.subraceSelect.addItem('Black - Acid')
+            self.subraceSelect.addItem('Blue - Lightning')
+            self.subraceSelect.addItem('Brass - Fire')
+            self.subraceSelect.addItem('Bronze - Lightning')
+            self.subraceSelect.addItem('Copper - Acid')
+            self.subraceSelect.addItem('Gold - Fire')
+            self.subraceSelect.addItem('Green - Poison')
+            self.subraceSelect.addItem('Red - Fire')
+            self.subraceSelect.addItem('Silver - Cold')
+            self.subraceSelect.addItem('White - Cold')
+            self.subraceSelect.addItem('Draconblood')
+            self.subraceSelect.addItem('Ravenite')
+            self.subraceSelect.addItem('Chromatic Black')
+            self.subraceSelect.addItem('Chromatic Blue')
+            self.subraceSelect.addItem('Chromatic Green')
+            self.subraceSelect.addItem('Chromatic Red')
+            self.subraceSelect.addItem('Chromatic White')
+            self.subraceSelect.addItem('Metallic Brass')
+            self.subraceSelect.addItem('Metallic Bronze')
+            self.subraceSelect.addItem('Metallic Copper')
+            self.subraceSelect.addItem('Metallic Gold')
+            self.subraceSelect.addItem('Metallic Silver')
+            self.subraceSelect.addItem('Amethyst - Force')
+            self.subraceSelect.addItem('Crystal - Radiant')
+            self.subraceSelect.addItem('Emerald - Psychic')
+            self.subraceSelect.addItem('Sapphire - Thunder')
+            self.subraceSelect.addItem('Topaz - Necrotic')
+        if init.race == 'Dwarf':
+            self.raceSenses.clear()
+            self.raceSenses.append('Darkvision(120), Dwarven Resilience, Dwarven Combat, Training, Stonecutting')
+            self.subraceSelect.clear()
+            self.subraceSelect.addItem('Dwarven Lineage')
+            self.subraceSelect.addItem('Hill Dwarf')
+            self.subraceSelect.addItem('Mountain Dwarf')
+            self.subraceSelect.addItem('Duergar')
+        if init.race == 'Elf':
+            self.raceSenses.clear()
+            self.raceSenses.append('Darkvision(60), Keen Senses, Fey Ancestry')
+            self.subraceSelect.clear()
+            self.subraceSelect.addItem('Fey Ancestry')
+            self.subraceSelect.addItem('Dark Elf')
+            self.subraceSelect.addItem('High Elf')
+            self.subraceSelect.addItem('Wood Elf')
+            self.subraceSelect.addItem('Pallid Elf')
+            self.subraceSelect.addItem('Mark of Shadow')
+            self.subraceSelect.addItem('Astral Elf')
+            self.subraceSelect.addItem('Bistahar Elf')
+            self.subraceSelect.addItem('Tirahar Elf')
+            self.subraceSelect.addItem('Vahadar Elf')
+            self.subraceSelect.addItem('Zendikar')
+            self.subraceSelect.addItem('Tajuru')
+            self.subraceSelect.addItem('Juraga')
+            self.subraceSelect.addItem('Mul Daya')
+            self.subraceSelect.addItem('Avariel Elf')
+            self.subraceSelect.addItem('Grugach Elf')
+        if init.race == 'Gnome':
+            self.raceSenses.clear()
+            self.raceSenses.append('Small, Darkvision(60), Gnome Cunning')
+            self.subraceSelect.clear()
+            self.subraceSelect.addItem('Gnome Lineage')
+            self.subraceSelect.addItem('Forest')
+            self.subraceSelect.addItem('Rock')
+            self.subraceSelect.addItem('Mark of Scribing')
+        if init.race == 'Halfling':
+            self.raceSenses.clear()
+            self.raceSenses.append('Lucky, Brave, Nimbleness')
+            self.subraceSelect.clear()
+            self.subraceSelect.addItem('Halfling Lineage')
+            self.subraceSelect.addItem('Lightfoot')
+            self.subraceSelect.addItem('Stout')
+            self.subraceSelect.addItem('Ghostwise')
+            self.subraceSelect.addItem('Lotusden')
+            self.subraceSelect.addItem('Mark of Hospitality')
+            self.subraceSelect.addItem('Mark of Healing')
+        if init.race == 'Half-Elf':
+            self.raceSenses.clear()
+            self.raceSenses.append('Darkvision(60), Fey Ancestry, Skill Versatility')
+            self.subraceSelect.clear()
+            self.subraceSelect.addItem('Half-Elf Marks')
+            self.subraceSelect.addItem('Mark of Detection')
+            self.subraceSelect.addItem('Mark of Storm')
+        if init.race == 'Half-Orc':
+            self.raceSenses.clear()
+            self.raceSenses.append('Darkvision(60), Menacing, Reletless Endurance, Savage Attacks')
+            self.subraceSelect.clear()
+            self.subraceSelect.addItem('Half-Orc Marks')
+            self.subraceSelect.addItem('Mark of Finding')
+        if init.race == 'Human':
+            self.raceSenses.clear()
+            self.raceSenses.append('None')
+            self.subraceSelect.clear()
+            self.subraceSelect.addItem('Human Lineage')
+            self.subraceSelect.addItem('Mark of Finding')
+            self.subraceSelect.addItem('Mark of Handling')
+            self.subraceSelect.addItem('Mark of Making')
+            self.subraceSelect.addItem('Mark of Passage')
+            self.subraceSelect.addItem('Mark of Sentinel')
+            self.subraceSelect.addItem('Keldon')
+            self.subraceSelect.addItem('Gavony')
+            self.subraceSelect.addItem('Kessig')
+            self.subraceSelect.addItem('Nephalia')
+            self.subraceSelect.addItem('Stensia')
+        if init.race == 'Tiefling':
+            self.raceSenses.clear()
+            self.raceSenses.append('Darkvision(60), Hellish Resistance, Infernal Legacy')
+            self.subraceSelect.clear()
+            self.subraceSelect.addItem('Tiefling Bloodlines')
+            self.subraceSelect.addItem('Asmodeus')
+            self.subraceSelect.addItem('Baalzebul')
+            self.subraceSelect.addItem('Dispater')
+            self.subraceSelect.addItem('Fierna')
+            self.subraceSelect.addItem('Glasya')
+            self.subraceSelect.addItem('Levistus')
+            self.subraceSelect.addItem('Mammon')
+            self.subraceSelect.addItem('Mephistopheles')
+            self.subraceSelect.addItem('Zariel')
+            self.subraceSelect.addItem('Variant Tiefling')
+            self.subraceSelect.addItem('Abyssal Tiefling')
+
+    def subraceFunctions(self):
+        if self.subraceSelect.currentText() == 'Draconic Ancestory' or self.subraceSelect.currentText() == 'Dwarven Lineage' or self.subraceSelect.currentText() == 'Gnome Lineage' or self.subraceSelect.currentText() == 'Fey Ancestory' or self.subraceSelect.currentText() == 'Halfling Lineage' or self.subraceSelect.currentText() == 'Half-Elf Marks' or self.subraceSelect.currentText() == 'Half-Orc Marks' or self.subraceSelect.currentText() == 'Human Lineage' or self.subraceSelect.currentText() == 'Tiefling Bloodlines':
+            self.raceLoad()
+            self.perksLoad()
+        if self.subraceSelect.currentText() == 'Black - Acid' or self.subraceSelect.currentText() == 'Chromatic Black':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon(Acid, 5 by 30ft line, DEX Save), Damage Resistance')
+        if self.subraceSelect.currentText() == 'Blue - Lightning' or self.subraceSelect.currentText() == 'Chromatic Blue':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon(Lightning, 5 by 30ft line, DEX Save), Damage Resistance')
+        if self.subraceSelect.currentText() == 'Brass - Fire' or self.subraceSelect.currentText() == 'Metallic Brass':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon(Fire, 5 by 30ft line, DEX Save), Damage Resistance')
+        if self.subraceSelect.currentText() == 'Bronze - Lightning' or self.subraceSelect.currentText() == 'Metallic Bronze':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon(Lightning, 5 by 30ft line, DEX Save), Damage Resistance')
+        if self.subraceSelect.currentText() == 'Copper - Acid' or self.subraceSelect.currentText() == 'Metallic Copper':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon(Acid, 5 by 30ft line, DEX Save), Damage Resistance')
+        if self.subraceSelect.currentText() == 'Gold - Fire' or self.subraceSelect.currentText() == 'Metallic Gold':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon(Fire, 15ft cone, DEX Save), Damage Resistance')
+        if self.subraceSelect.currentText() == 'Green - Poison' or self.subraceSelect.currentText() == 'Chromatic Green':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon(Poison, 15ft cone, CON Save), Damage Resistance')
+        if self.subraceSelect.currentText() == 'Red - Fire' or self.subraceSelect.currentText() == 'Chromatic Red':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon(Fire, 15ft cone, DEX Save), Damage Resistance')
+        if self.subraceSelect.currentText() == 'Silver - Cold' or self.subraceSelect.currentText() == 'Metallic Silver':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon(Cold, 15ft cone, CON Save), Damage Resistance')
+        if self.subraceSelect.currentText() == 'White - Cold' or self.subraceSelect.currentText() == 'Chromatic White':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon(Cold, 15ft cone, CON Save), Damage Resistance')
+        if self.subraceSelect.currentText() == 'Amethyst - Force':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon(Force, 15ft cone, DEX Save), Damage Resistance')
+        if self.subraceSelect.currentText() == 'Crystal - Radiant':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon(Radiant, 15ft cone, DEX Save), Damage Resistance')
+        if self.subraceSelect.currentText() == 'Emerald - Psychic':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon(Psychic, 15ft cone, DEX Save), Damage Resistance')
+        if self.subraceSelect.currentText() == 'Sapphire - Thunder':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon(Thunder, 15ft cone, DEX Save), Damage Resistance')
+        if self.subraceSelect.currentText() == 'Topaz - Necrotic':
+            self.raceSenses.clear()
+            self.raceSenses.append('Breath Weapon(Necrotic, 15ft cone, DEX Save), Damage Resistance')
+
+    def perksLoad(self):
+        self.perksDisplay.clear()
+        #race perks
+        if init.race == 'Dragonborn':
+            self.perksDisplay.append('Born of dragons, as their name proclaims, the dragonborn walk proudly through a world that greets them with fearful incomprehension. Shaped by draconic gods or the dragons themselves, dragonborn originally hatched from dragon eggs as a unique race, combining the best attributes of dragons and humanoids. Some dragonborn are faithful servants to true dragons, others form the ranks of soldiers in great wars, and still others find themselves adrift, with no clear calling in life.')
+            self.perksDisplay.append('Ability Score Increase : Your Strength score increases by 2, and your Charisma score increases by 1')
+            self.perksDisplay.append('Age : Young dragonborn grow quickly. They walk hours after hatching, attain the size and development of a 10=year-old human child by the age of 3, and reach adulthood by 15. They live to be around 80')
+            self.perksDisplay.append('Alignment : Dragonborn tend towards extremes, making a conscious choice for one side or the other between Good and Evil(represented by Bahamut and Tiamat, respectively). More side with Bahamut than Tiamat(whose non-dragon followers are mostly kobolds), but villainous dragonborn can be quite terrible indeed. Some rare few choose to devote themselves to lesser dragon deities, such as Chronepsis(Neutral), and fewer still choose to worship Io, the Ninefold Dragon, who is all alignments at once.')
+            self.perksDisplay.append('Size : Dragonborn are taller and heavier than humans, standing well over 6 feet tall and averaging 250 pounds. Your size is Medium')
+            self.perksDisplay.append('Speed : Your base walking speed is 30 feet')
+            self.perksDisplay.append('Draconic Ancestry :  You are distantly related to a particular kind of dragon. Choose a type of dragon, this determines the damage and area of your breath weapon, and the type of resistance you gain')
+            self.perksDisplay.append('Breath Weapon : You can use your action to exhale destructive energy. It deals damage in an area according to your ancestry. When you use your breath weapon, all creatures in the area must make a saving throw, the type is determined by your ancestry. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.')
+            self.perksDisplay.append('Damage Resistance : You have resistance to the damage type associated with your ancestry.')
+            self.perksDisplay.append('Languages : You can read, speak, and write Common and Draconic')
+        #subrace perks
+        #class perks
+        #level up perks
+        pass
+    
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
